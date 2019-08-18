@@ -1,13 +1,13 @@
-@import: packages/satysfi-api
-@import: packages/itemize
+@import: ../packages/satysfi-api
+@import: ../packages/itemize
 
 document (|
   title = {SATySFi API};
-  style-sheet = `html/main.css`;
+  style-sheet = `main.css`;
 |) '<
   +listing{
-    * \href(`html/annot.html`){ハイパーリンク}
-    * \href(`html/code.html`){ソースコード}
-    * \href(`html/color.html`){色}
+    * \href(`annot.html`){ハイパーリンク}
+    * \href(`code.html`){ソースコード}
+    * \href(`color.html`){色}
   }
 >
