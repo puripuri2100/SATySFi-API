@@ -24,7 +24,7 @@ document (|
     +section {作成用関数}<
       +val (`scheme`) (`deco-set -> color -> context -> string -> block-boxes`) <
         +p{コードを表示する部分の装飾、文字色、context、コードをそれぞれ与えることでソースコードが
-        組まれた\code(`block-boxes`);を得ることができます。}
+        組まれた\type(`block-boxes`);を得ることができます。}
       >
     >
   >
@@ -52,7 +52,7 @@ document (|
       +val (`scheme`) (`deco-set -> color -> context -> syntax-def option -> string -> block-boxes`) <
         +p{コードを表示する部分の装飾、文字色、context、シンタックスハイライト、コード
         をそれぞれ与えることでソースコードが
-        組まれた\code(`block-boxes`);を得ることができます。}
+        組まれた\type(`block-boxes`);を得ることができます。}
       >
     >
   >
