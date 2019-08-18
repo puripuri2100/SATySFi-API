@@ -1,0 +1,178 @@
+@require: list
+@require: option
+@require: html-base
+
+@import: itemize
+@import: code
+@import: url
+
+
+
+module SATySFiAPI : sig
+
+  val document : 'a -> block-text -> string
+    constraint 'a :: (|
+      title : inline-text;
+      style-sheet : string;
+    |)
+
+
+  direct \ref : [string] inline-cmd
+  direct +section : [string?; inline-text; block-text] block-cmd
+  direct +subsection : [string?; inline-text; block-text] block-cmd
+  direct +p : [inline-text] block-cmd
+  direct +pn : [inline-text] block-cmd
+  direct +top : [inline-text; block-text] block-cmd
+  direct +val : [string; string; block-text] block-cmd
+  direct +type : [string; string; block-text] block-cmd
+
+
+
+end = struct
+
+let concat = List.fold-left (^) ` `
+
+
+let generate-fresh-label =
+  let-mutable count <- 0 in
+    (fun () -> (
+      let () = count <- !count + 1 in
+        `generated:` ^ (arabic (!count))
+    ))
+
+
+let-inline tinfo \ref key =
+  let opt = get-cross-reference (key ^ `:num`) in
+  let it =
+    match opt with
+    | None -> {?}
+    | Some(s) -> embed-string s
+  in
+    stringify-inline tinfo it
+
+
+
+let document record inner =
+  let tinfo = get-initial-text-info () in
+
+  let title = record#title in
+  let style-sheet = record#style-sheet in
+
+  let lang = `ja` in
+
+  let s-title = HTMLBase.tag ?* ?:false tinfo `title` (fun tinfo ->stringify-inline tinfo title) in
+  let s-style-sheet = `<link rel="stylesheet" type="text/css" href="` ^ style-sheet ^ `">` in
+
+
+  let head tinfo =
+    HTMLBase.tag tinfo `head` (fun tinfo ->
+      concat[
+        `<meta charset="UTF-8">` ^ (break tinfo);
+        s-title ^ (break tinfo);
+        s-style-sheet;
+      ]
+    )
+  in
+
+
+  let body tinfo =
+    HTMLBase.tag tinfo `body` (fun tinfo -> stringify-block tinfo inner)
+  in
+
+  let main =
+    concat [
+      `<!DOCTYPE html>` ^ (break tinfo);
+      HTMLBase.tag ?:([(`lang`, lang)]) tinfo `html` (fun tinfo ->
+        concat[
+          (head tinfo);
+          (break tinfo);
+          (body tinfo);
+        ]
+      );
+    ]
+  in
+    main
+
+
+let-mutable num-section <- 0
+let-mutable num-subsection <- 0
+
+
+let section-scheme tinfo label title inner =
+  let () = num-section <- !num-section + 1 in
+  let () = num-subsection <- 0 in
+  let s-num = arabic (!num-section) in
+  let () = register-cross-reference (label ^ `:num`) s-num in
+  let s-title tinfo =
+    HTMLBase.tag ?* ?:false tinfo `h1` (fun tinfo -> stringify-inline tinfo title)
+  in
+  let s-inner tinfo = stringify-block tinfo inner in
+  let main tinfo = s-title tinfo ^ (break tinfo) ^ s-inner tinfo in
+    HTMLBase.tag tinfo `section` (fun tinfo -> main tinfo)
+
+
+let subsection-scheme tinfo label title inner =
+  let () = num-subsection <- !num-subsection + 1 in
+  let s-num = arabic (!num-section) ^ `.` ^ arabic (!num-subsection) in
+  let () = register-cross-reference (label ^ `:num`) s-num in
+  let s-title tinfo =
+    HTMLBase.tag ?* ?:false tinfo `h2` (fun tinfo -> stringify-inline tinfo title)
+  in
+  let s-inner tinfo = stringify-block tinfo inner in
+  let main tinfo = s-title tinfo ^ (break tinfo) ^ s-inner tinfo in
+    HTMLBase.tag tinfo `section` (fun tinfo -> main tinfo)
+
+
+let-block tinfo +section ?:labelopt title inner =
+  let label =
+    match labelopt with
+    | None -> generate-fresh-label ()
+    | Some(s) -> s
+  in
+    section-scheme tinfo label title inner
+
+
+let-block tinfo +subsection ?:labelopt title inner =
+  let label =
+    match labelopt with
+    | None -> generate-fresh-label ()
+    | Some(s) -> s
+  in
+    subsection-scheme tinfo label title inner
+
+
+
+let-block tinfo +p it =
+  HTMLBase.tag tinfo `p` (fun tinfo -> stringify-inline tinfo it) ^ (break tinfo)
+
+let-block tinfo +pn it =
+  HTMLBase.tag tinfo `p` (fun tinfo -> stringify-inline tinfo it) ^ (break tinfo)
+
+
+let-block tinfo +top it-name bt-inner =
+  let s-name tinfo = stringify-inline tinfo it-name in
+  let s-inner tinfo = stringify-block tinfo bt-inner in
+    HTMLBase.tag ?:([(`class`, `api-top`)]) tinfo `div` (fun tinfo ->
+      s-name tinfo ^ break tinfo ^ s-inner tinfo
+    )
+
+
+let-block tinfo +val s-name s-type bt-inner =
+  let s-val = `val `# ^ s-name ^ #` : `# ^ s-type in
+  let s-inner tinfo = stringify-block tinfo bt-inner in
+    HTMLBase.tag ?:([(`class`, `api-val`)]) tinfo `div` (fun tinfo ->
+      s-val ^ break tinfo ^ s-inner tinfo
+    )
+
+
+let-block tinfo +type s-name s-type bt-inner =
+  let s-type = `type `# ^ s-name ^ #` : `# ^ s-type in
+  let s-inner tinfo = stringify-block tinfo bt-inner in
+    HTMLBase.tag ?:([(`class`, `api-type`)]) tinfo `div` (fun tinfo ->
+      s-type ^ break tinfo ^ s-inner tinfo
+    )
+
+
+end
+
+let document = SATySFiAPI.document

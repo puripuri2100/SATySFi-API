@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>色</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+  </head>
+  <body>
+    <div class="api-top">
+      module Code: sig end
+      <p>
+        色に関する関数を提供します。
+        color.satyhによって提供され、<span class="code-inline"><code>@require: color</code></span>とすると使うことができます。
+      </p>
+      <section>
+        <h1>色</h1>
+        <div class="api-val">
+          val black : color
+          <p>
+            黒色
+          </p>
+          
+        </div><div class="api-val">
+          val whiite : color
+          <p>
+            白色
+          </p>
+          
+        </div><div class="api-val">
+          val red : color
+          <p>
+            赤色
+          </p>
+          
+        </div><div class="api-val">
+          val yellow : color
+          <p>
+            黄色
+          </p>
+          
+        </div><div class="api-val">
+          val orange : color
+          <p>
+            橙色
+          </p>
+          
+        </div><div class="api-val">
+          val blue : color
+          <p>
+            青色
+          </p>
+          
+        </div>
+      </section><section>
+        <h1>色作成関数</h1>
+        <div class="api-val">
+          val gray : float -> color
+          <p>
+            グレイスケールを指定することで色を作成できます。<span class="code-inline"><code>gray 0.</code></span>で黒、<span class="code-inline"><code>gray 1.</code></span>で白です。
+          </p>
+          
+        </div><div class="api-val">
+          val rgb : float -> float -> float -> color
+          <p>
+            RGBでの色空間を指定することで、色を作成できます。
+            <span class="code-inline"><code>rgb 1. 0. 0.</code></span>で赤、<span class="code-inline"><code>rgb 0. 1. 0.</code></span>で緑、<span class="code-inline"><code>rgb 0. 0. 1.</code></span>で青です。
+          </p>
+          
+        </div>
+      </section>
+    </div><div class="api-top">
+      module Code2: sig end
+      <p>
+        <a href="https://github.com/nyuichi/satysfi-lib">
+          satysfi-lib
+        </a>/typeset/color2.satyhによって提供されます。
+      </p>
+      <div class="api-val">
+        val srgb24 : int -> int -> int -> color
+        <p>
+          RGB値の指定に、0から255までの整数を用いる関数です。
+        </p>
+        
+      </div><div class="api-val">
+        val of-css : string -> color
+        <p>
+          <span class="code-inline"><code>#F5F5DC</code></span>や<span class="code-inline"><code>beige</code></span>を指定すると、その色がかえってきます。
+          登録されている色はCSSで使えるものだけです。
+        </p>
+        
+      </div>
+    </div>
+  </body>
+</html>

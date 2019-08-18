@@ -1,0 +1,53 @@
+@import: ../packages/satysfi-api
+
+
+document (|
+  title = {ハイパーリンク};
+  style-sheet = `main.css`;
+|) '<
+  +top {primitive}<
+    +p{ハイパーリンクに関するプリミティブです。}
+
+    +val (`register-link-to-uri`) (`string -> point -> length -> length-> length -> (length * color) option -> unit`) <
+      +p{URLと座標、幅、高さ、深さ、枠線を指定してURLへのハイパーリンクを生成します。}
+    >
+
+    +val (`register-link-to-location`) (`string -> point -> length -> length-> length -> (length * color) option -> unit`) <
+      +p{キーと座標、幅、高さ、深さ、枠線を指定してジャンプ先へのハイパーリンクを生成します。}
+    >
+
+    +val (`register-destination`) (`string -> point -> unit`) <
+      +p{キーと座標を指定して、ジャンプ先を登録します。}
+    >
+  >
+  +top{module Annot: sig end}<
+    +p{ハイパーリンクに関する関数とコマンドを提供します。}
+    +p{annot.satyhによって提供され、\code(`@require: annot`);とすると使うことができます。}
+
+    +section {コマンド}<
+      +val(`\href`) (`[(length * color)?; string; inline-text] inline-cmd`) <
+        +p{第一引数にURLを、第二引数に文字列を入れると、URL先に飛べる文字列が出力されます。}
+        +p{オプション引数でハイパーリンク部分を囲う枠の色と太さを調節できます。
+        この枠は印刷時には消えます。}
+      >
+    >
+    +section {装飾用関数}<
+      +val (`link-to-uri-frame`) (`string -> (length * color) option -> deco-set`) <
+        +p{URLとハイパーリンク部分を囲う枠の色と太さの情報を与えると\code(`deco-set`);を返してくれます。
+        この\code(`deco-set`);を\code(`inline-frame-breakable`);等で処理すると、ハイパーリンク部分が生成されます。}
+        +p{\code(```link-to-url-frame `https://github.com/gfngfn/SATySFi` Some (0.5pt, Color.red) ```);のようにして使用します。}
+      >
+
+      +val (`link-to-location-frame`) (`string -> (length * color) option -> deco-set`)<
+        +p{文書内のハイパーリンクに関する関数です。
+        \code(`link-to-uri-frame`);と似た使い方ですが、第一引数にはURLではなく後述する“キー”を入れます。}
+        +p{\code(```link-to-url-frame `key` Some (0.5pt, Color.red) ```);のようにして使用します。}
+      >
+
+      +val (`register-location-frame`) (`string -> deco-set`) <
+        +p{キーを指定すると、\code(`deco-set`);が返ってきます。これを\code(`inline-frame-breakable`);等で処理すると、文書内ハイパーリンクのジャンプ先を作ることができます。
+        ここで指定したキーと同じキーを\code(`link-to-location-frame`);で指定すると、そこから飛んでくることが可能になります。}
+      >
+    >
+  >
+>

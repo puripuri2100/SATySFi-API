@@ -1,0 +1,79 @@
+@require: list
+@require: html-base
+
+module HTMLCode : sig
+
+  direct +code : [string] block-cmd
+  direct +console : [string] block-cmd
+  direct \code : [string] inline-cmd
+  direct \console : [string] inline-cmd
+  direct \d-code : [string] inline-cmd
+
+end = struct
+
+
+let-rec string-skip s n =
+  if n <= 0 then
+    ` `
+  else
+    s ^ (string-skip s (n - 1))
+
+
+let scheme tinfo code show-indent break-code =
+  let code-tinfo =
+    tinfo |> deepen-indent (10)
+  in
+  HTMLBase.tag ?* ?:(false) code-tinfo `code` (fun tinfo -> (
+    let lstraw = split-into-lines code in
+    let lst =
+      match lstraw with
+      | []        -> lstraw
+      | x :: []   -> lstraw
+      | _ :: tail -> tail
+    in
+    let s-code =
+        lst |> List.fold-left-adjacent (fun sacc (i, s-sub) _ optnext -> (
+          let indent =
+            if show-indent then
+              string-skip `&nbsp;` i
+            else
+              ` `
+          in
+          let s-last =
+            match optnext with
+            | Some(_) -> ` ` ^ break-code ^ (break tinfo)
+            | None    -> ` `
+          in
+          let s =
+            indent ^ s-sub ^ s-last
+          in
+            sacc ^ s
+        )) ` `
+      in
+      s-code
+  ))
+
+
+let-block tinfo +code code =
+  HTMLBase.tag ?:[(`class`, `code-display`)] ?:(false) tinfo `div` (fun tinfo -> scheme tinfo code true `<br>`)
+
+
+let-block tinfo +console code =
+  HTMLBase.tag ?:[(`class`, `console-display`)] ?:(false) tinfo `div` (fun tinfo -> scheme tinfo code true `<br>`)
+
+
+let-inline tinfo \code code =
+  HTMLBase.tag ?:[(`class`, `code-inline`)] ?:(false) tinfo `span` (fun tinfo ->
+    scheme tinfo code false (` `)
+  )
+
+
+let-inline tinfo \console code =
+  HTMLBase.tag ?:[(`class`, `console-display`)] ?:(false) tinfo `div` (fun tinfo -> scheme tinfo code true `<br>`)
+
+
+let-inline tinfo \d-code code =
+  HTMLBase.tag ?:[(`class`, `code-display`)] ?:(false) tinfo `div` (fun tinfo -> scheme tinfo code true `<br>`)
+
+
+end

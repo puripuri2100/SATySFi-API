@@ -1,0 +1,59 @@
+@import: ../packages/satysfi-api
+
+
+document (|
+  title = {コード};
+  style-sheet = `main.css`;
+|) '<
+  +top{module Code: sig end}<
+    +p{ソースコードを載せるときに使う関数とコマンドを提供します。}
+    +p{code.satyhによって提供され、\code(`@require: code`);とすると使うことができます。}
+
+    +section {コマンド}<
+      +val (`+code`) (`[string] block-cmd`) <
+      >
+
+      +val (`+console`) (`[string] block-cmd`) <>
+
+      +val (`\code`) (`[string] inline-cmd`) <>
+
+      +val (`\console`) (`[string] inline-cmd`) <>
+
+      +val (`d-code`) (`[string] inline-cmd`) <>
+    >
+    +section {作成用関数}<
+      +val (`scheme`) (`deco-set -> color -> context -> string -> block-boxes`) <
+        +p{コードを表示する部分の装飾、文字色、context、コードをそれぞれ与えることでソースコードが
+        組まれた\code(`block-boxes`);を得ることができます。}
+      >
+    >
+  >
+
+  +top{module Code2: sig end}<
+    +p{ソースコードを載せるときに使う関数とコマンドを提供します。}
+    +p{\href(`https://github.com/nyuichi/satysfi-lib`){satysfi-lib}/typeset/code2.satyhによって提供されます。}
+
+    +section {コマンド}<
+      +val (`+code`) (`[syntax-def?; string] block-cmd`) <
+      >
+
+      +val (`+console`) (`[syntax-def?; string] block-cmd`) <>
+
+      +val (`\code`) (`[string] inline-cmd`) <>
+
+      +val (`\console`) (`[syntax-def?; string] inline-cmd`) <>
+
+      +val (`d-code`) (`[syntax-def?; string] inline-cmd`) <>
+    >
+    +section {作成用関数}<
+      +type (`syntax-def`) (`(|groups : ((|color : color; keywords : string list|)) list; ident-regexp : RegExp.t|)`)<
+        +p{ソースコードのシンタックスハイライトを決めるための型です。}
+      >
+      +val (`scheme`) (`deco-set -> color -> context -> syntax-def option -> string -> block-boxes`) <
+        +p{コードを表示する部分の装飾、文字色、context、シンタックスハイライト、コード
+        をそれぞれ与えることでソースコードが
+        組まれた\code(`block-boxes`);を得ることができます。}
+      >
+    >
+  >
+>

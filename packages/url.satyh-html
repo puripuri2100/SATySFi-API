@@ -1,0 +1,15 @@
+@require: html-base
+
+module Url :sig
+
+  direct \href : [string; inline-text] inline-cmd
+  direct \url : [string] inline-cmd
+
+end = struct
+
+  let-inline tinfo \href url it =
+    HTMLBase.tag ?:[(`href`, url)] tinfo `a` (fun tinfo -> stringify-inline tinfo it)
+
+  let-inline \url url = {\href(url)(embed-string url);}
+
+end

@@ -1,0 +1,63 @@
+@import: ../packages/satysfi-api
+
+
+document (|
+  title = {色};
+  style-sheet = `main.css`;
+|) '<
+  +top {module Code: sig end}<
+    +p{色に関する関数を提供します。
+    color.satyhによって提供され、\code(`@require: color`);とすると使うことができます。}
+
+    +section{色}<
+      +val (`black`) (`color`) <
+        +p{黒色}
+      >
+
+      +val (`whiite`) (`color`) <
+        +p{白色}
+      >
+
+      +val (`red`) (`color`) <
+        +p{赤色}
+      >
+
+      +val (`yellow`) (`color`) <
+        +p{黄色}
+      >
+
+      +val (`orange`) (`color`) <
+        +p{橙色}
+      >
+
+      +val (`blue`) (`color`) <
+        +p{青色}
+      >
+    >
+
+
+    +section {色作成関数}<
+      +val (`gray`) (`float -> color`) <
+        +p{グレイスケールを指定することで色を作成できます。\code(`gray 0.`);で黒、\code(`gray 1.`);で白です。}
+      >
+
+      +val (`rgb`) (`float -> float -> float -> color`) <
+        +p{RGBでの色空間を指定することで、色を作成できます。
+        \code(`rgb 1. 0. 0.`);で赤、\code(`rgb 0. 1. 0.`);で緑、\code(`rgb 0. 0. 1.`);で青です。}
+      >
+    >
+  >
+
+  +top {module Code2: sig end}<
+    +p{\href(`https://github.com/nyuichi/satysfi-lib`){satysfi-lib}/typeset/color2.satyhによって提供されます。}
+
+    +val (`srgb24`) (`int -> int -> int -> color`) <
+      +p{RGB値の指定に、0から255までの整数を用いる関数です。}
+    >
+
+    +val (`of-css`) (`string -> color`) <
+      +p{\code(`#F5F5DC`);や\code(`beige`);を指定すると、その色がかえってきます。
+      登録されている色はCSSで使えるものだけです。}
+    >
+  >
+>
