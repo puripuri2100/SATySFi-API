@@ -7,88 +7,126 @@
   </head>
   <body>
     <div class="api-top">
-      module Code: sig end
-      <p>
-        ソースコードを載せるときに使う関数とコマンドを提供します。
-      </p>
-      <p>
-        code.satyhによって提供され、<span class="code-inline"><code>@require: code</code></span>とすると使うことができます。
-      </p>
-      <section>
-        <h1>コマンド</h1>
-        <div class="api-val">
-          val +code : [string] block-cmd
-          
-        </div><div class="api-val">
-          val +console : [string] block-cmd
-          
-        </div><div class="api-val">
-          val \code : [string] inline-cmd
-          
-        </div><div class="api-val">
-          val \console : [string] inline-cmd
-          
-        </div><div class="api-val">
-          val d-code : [string] inline-cmd
-          
-        </div>
-      </section><section>
-        <h1>作成用関数</h1>
-        <div class="api-val">
-          val scheme : deco-set -> color -> context -> string -> block-boxes
-          <p>
-            コードを表示する部分の装飾、文字色、context、コードをそれぞれ与えることでソースコードが
-            組まれた<span class="code-inline"><code>block-boxes</code></span>を得ることができます。
-          </p>
-          
-        </div>
-      </section>
+      <div class="api-top-name">
+        module Code: sig end
+      </div>
+      <div class="api-top-inner">
+        <p>
+          ソースコードを載せるときに使う関数とコマンドを提供します。
+        </p>
+        <p>
+          code.satyhによって提供され、<span class="code-inline"><code>@require: code</code></span>とすると使うことができます。
+        </p>
+        <section>
+          <h1>コマンド</h1>
+          <div class="api-val">
+            <span class="keyword">
+            val 
+          </span>+code : [string] block-cmd
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>+console : [string] block-cmd
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>\code : [string] inline-cmd
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>\console : [string] inline-cmd
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>d-code : [string] inline-cmd
+            
+          </div>
+        </section><section>
+          <h1>作成用関数</h1>
+          <div class="api-val">
+            <span class="keyword">
+            val 
+          </span>scheme : deco-set -> color -> context -> string -> block-boxes
+            <p>
+              コードを表示する部分の装飾、文字色、context、コードをそれぞれ与えることでソースコードが
+              組まれた<span class="inline-type">
+                block-boxes
+              </span>を得ることができます。
+            </p>
+            
+          </div>
+        </section>
+      </div>
     </div><div class="api-top">
-      module Code2: sig end
-      <p>
-        ソースコードを載せるときに使う関数とコマンドを提供します。
-      </p>
-      <p>
-        <a href="https://github.com/nyuichi/satysfi-lib">
-          satysfi-lib
-        </a>/typeset/code2.satyhによって提供されます。
-      </p>
-      <section>
-        <h1>コマンド</h1>
-        <div class="api-val">
-          val +code : [syntax-def?; string] block-cmd
-          
-        </div><div class="api-val">
-          val +console : [syntax-def?; string] block-cmd
-          
-        </div><div class="api-val">
-          val \code : [string] inline-cmd
-          
-        </div><div class="api-val">
-          val \console : [syntax-def?; string] inline-cmd
-          
-        </div><div class="api-val">
-          val d-code : [syntax-def?; string] inline-cmd
-          
-        </div>
-      </section><section>
-        <h1>作成用関数</h1>
-        <div class="api-type">
-          type syntax-def : (|groups : ((|color : color; keywords : string list|)) list; ident-regexp : RegExp.t|)
-          <p>
-            ソースコードのシンタックスハイライトを決めるための型です。
-          </p>
-          
-        </div><div class="api-val">
-          val scheme : deco-set -> color -> context -> syntax-def option -> string -> block-boxes
-          <p>
-            コードを表示する部分の装飾、文字色、context、シンタックスハイライト、コード
-            をそれぞれ与えることでソースコードが
-            組まれた<span class="code-inline"><code>block-boxes</code></span>を得ることができます。
-          </p>
-          
-        </div>
-      </section>
+      <div class="api-top-name">
+        module Code2: sig end
+      </div>
+      <div class="api-top-inner">
+        <p>
+          ソースコードを載せるときに使う関数とコマンドを提供します。
+        </p>
+        <p>
+          <a href="https://github.com/nyuichi/satysfi-lib">
+            satysfi-lib
+          </a>/typeset/code2.satyhによって提供されます。
+        </p>
+        <section>
+          <h1>コマンド</h1>
+          <div class="api-val">
+            <span class="keyword">
+            val 
+          </span>+code : [syntax-def?; string] block-cmd
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>+console : [syntax-def?; string] block-cmd
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>\code : [string] inline-cmd
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>\console : [syntax-def?; string] inline-cmd
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>d-code : [syntax-def?; string] inline-cmd
+            
+          </div>
+        </section><section>
+          <h1>作成用関数</h1>
+          <div class="api-type">
+            <span class="keyword">
+            type 
+          </span>syntax-def : (|groups : ((|color : color; keywords : string list|)) list; ident-regexp : RegExp.t|)
+            <p>
+              ソースコードのシンタックスハイライトを決めるための型です。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>scheme : deco-set -> color -> context -> syntax-def option -> string -> block-boxes
+            <p>
+              コードを表示する部分の装飾、文字色、context、シンタックスハイライト、コード
+              をそれぞれ与えることでソースコードが
+              組まれた<span class="inline-type">
+                block-boxes
+              </span>を得ることができます。
+            </p>
+            
+          </div>
+        </section>
+      </div>
     </div>
   </body>
 </html>

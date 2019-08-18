@@ -25,7 +25,7 @@ module SATySFiAPI : sig
   direct +top : [inline-text; block-text] block-cmd
   direct +val : [string; string; block-text] block-cmd
   direct +type : [string; string; block-text] block-cmd
-
+  direct \type : [string] inline-cmd
 
 
 end = struct
@@ -149,16 +149,35 @@ let-block tinfo +pn it =
   HTMLBase.tag tinfo `p` (fun tinfo -> stringify-inline tinfo it) ^ (break tinfo)
 
 
+let my-stringify-inline s tinfo = stringify-inline tinfo s
+
+let my-stringify-block s tinfo = stringify-block tinfo s
+
+let s-nil s tinfo = s 
+
+let keyword tinfo f =
+  HTMLBase.tag ?:([(`class`, `keyword`)]) tinfo `span` (fun tinfo -> f tinfo)
+
+
+
 let-block tinfo +top it-name bt-inner =
-  let s-name tinfo = stringify-inline tinfo it-name in
-  let s-inner tinfo = stringify-block tinfo bt-inner in
+  let s-name tinfo =
+    HTMLBase.tag ?:([(`class`, `api-top-name`)]) tinfo `div` (fun tinfo ->
+      stringify-inline tinfo it-name
+    )
+  in
+  let s-inner tinfo =
+    HTMLBase.tag ?:([(`class`, `api-top-inner`)]) tinfo `div` (fun tinfo ->
+      stringify-block tinfo bt-inner
+    )
+  in
     HTMLBase.tag ?:([(`class`, `api-top`)]) tinfo `div` (fun tinfo ->
       s-name tinfo ^ break tinfo ^ s-inner tinfo
     )
 
 
 let-block tinfo +val s-name s-type bt-inner =
-  let s-val = `val `# ^ s-name ^ #` : `# ^ s-type in
+  let s-val = keyword tinfo (s-nil `val `#) ^ s-name ^ #` : `# ^ s-type in
   let s-inner tinfo = stringify-block tinfo bt-inner in
     HTMLBase.tag ?:([(`class`, `api-val`)]) tinfo `div` (fun tinfo ->
       s-val ^ break tinfo ^ s-inner tinfo
@@ -166,12 +185,17 @@ let-block tinfo +val s-name s-type bt-inner =
 
 
 let-block tinfo +type s-name s-type bt-inner =
-  let s-type = `type `# ^ s-name ^ #` : `# ^ s-type in
+  let s-type = keyword tinfo (s-nil `type `# ) ^ s-name ^ #` : `# ^ s-type in
   let s-inner tinfo = stringify-block tinfo bt-inner in
     HTMLBase.tag ?:([(`class`, `api-type`)]) tinfo `div` (fun tinfo ->
       s-type ^ break tinfo ^ s-inner tinfo
     )
 
+
+let-inline tinfo \type s-type =
+  HTMLBase.tag ?:([(`class`, `inline-type`)]) tinfo `span` (fun tinfo ->
+    s-type
+  )
 
 end
 

@@ -1,6 +1,68 @@
-h1 {
-  color: white;
-  text-align: center;
-  background-color: aqua;
+body{
+  background-color : white;
+  font-family : Arial;
 }
 
+p {
+  margin-left: 30px
+}
+
+h1 {
+  color: black ;
+  text-align: center ;
+  background-color: aqua ;
+}
+
+.api-top-name {
+  font-size: 30px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.keyword {
+  font-weight : bold ;
+  color: Red;
+}
+
+.code-display{
+  width: 90%;
+  border: solid black;
+  color: black;
+  background-color: rgb(189, 189, 189);
+  font-size: 12pt;
+  font-style: normal;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+.code-inline{
+  font-size : 13pt;
+  color: black;
+  background-color: rgb(189, 189, 189);
+  margin-left: 5px;
+  margin-right: 5px;
+  font-family: Consolas;
+}
+
+
+.console-display{
+  width: 90%;
+  color: white;
+  background-color: black;
+  font-size: 12pt;
+  font-style: normal;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.inline-type {
+  color: black;
+  font: italic
+}
