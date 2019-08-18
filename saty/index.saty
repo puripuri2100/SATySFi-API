@@ -11,4 +11,5 @@ document (|
     * \href(`color.html`){色}
     * \href(`deco.html`){deco}
   }
+  +p{Repository: \href(`https://github.com/puripuri2100/SATySFI-API`){puripuri2100/SATySFI-API}}
 >
