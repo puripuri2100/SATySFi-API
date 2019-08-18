@@ -1,0 +1,13 @@
+@import: packages/satysfi-api
+@import: packages/itemize
+
+document (|
+  title = {SATySFi API};
+  style-sheet = `html/main.css`;
+|) '<
+  +listing{
+    * \href(`html/annot.html`){ハイパーリンク}
+    * \href(`html/code.html`){ソースコード}
+    * \href(`html/color.html`){色}
+  }
+>
