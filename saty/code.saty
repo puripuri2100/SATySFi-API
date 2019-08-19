@@ -10,16 +10,16 @@ document (|
     +p{code.satyhによって提供され、\code(`@require: code`);とすると使うことができます。}
 
     +section {コマンド}<
-      +val (`+code`) (`[string] block-cmd`) <
+      +direct (`+code`) (`[string] block-cmd`) <
       >
 
-      +val (`+console`) (`[string] block-cmd`) <>
+      +direct (`+console`) (`[string] block-cmd`) <>
 
-      +val (`\code`) (`[string] inline-cmd`) <>
+      +direct (`\code`) (`[string] inline-cmd`) <>
 
-      +val (`\console`) (`[string] inline-cmd`) <>
+      +direct (`\console`) (`[string] inline-cmd`) <>
 
-      +val (`d-code`) (`[string] inline-cmd`) <>
+      +direct (`\d-code`) (`[string] inline-cmd`) <>
     >
     +section {作成用関数}<
       +val (`scheme`) (`deco-set -> color -> context -> string -> block-boxes`) <
@@ -34,16 +34,16 @@ document (|
     +p{\href(`https://github.com/nyuichi/satysfi-lib`){satysfi-lib}/typeset/code2.satyhによって提供されます。}
 
     +section {コマンド}<
-      +val (`+code`) (`[syntax-def?; string] block-cmd`) <
+      +direct (`+code`) (`[syntax-def?; string] block-cmd`) <
       >
 
-      +val (`+console`) (`[syntax-def?; string] block-cmd`) <>
+      +direct (`+console`) (`[syntax-def?; string] block-cmd`) <>
 
-      +val (`\code`) (`[string] inline-cmd`) <>
+      +direct (`\code`) (`[string] inline-cmd`) <>
 
-      +val (`\console`) (`[syntax-def?; string] inline-cmd`) <>
+      +direct (`\console`) (`[syntax-def?; string] inline-cmd`) <>
 
-      +val (`d-code`) (`[syntax-def?; string] inline-cmd`) <>
+      +direct (`\d-code`) (`[syntax-def?; string] inline-cmd`) <>
     >
     +section {作成用関数}<
       +type (`syntax-def`) (`(|groups : ((|color : color; keywords : string list|)) list; ident-regexp : RegExp.t|)`)<
