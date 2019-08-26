@@ -1,0 +1,39 @@
+@import: ../packages/satysfi-api
+
+
+document (|
+  title = {色};
+  style-sheet = `main.css`;
+|) '<
+  +top {module ZRandom0: sig end}<
+    +p{ランダムに関する関数を提供します。
+    \href(`https://github.com/zr-tex8r/satysfi-zrbase`){satysfi-zrbase}/zrandom0.satyhによって提供されます。}
+
+    +section {型} <
+      +type (`t`) (`(int ref) list`) <>
+    >
+
+    +section {各種関数}<
+      +val (`init`) (`int -> unit`) <>
+      +val (`bits`) (`unit -> int`) <>
+      +val (`int`) (`int -> int`) <>
+      +val (`float`) (`float -> float`) <>
+      +val (`bool`) (`unit -> bool`) <>
+      +val (`create`) (`int -> t`) <>
+      +val (`bits-with`) (`t -> int`) <>
+      +val (`int-with`) (`t -> int -> int`) <>
+      +val (`float-with`) (`t -> float -> float`) <>
+      +val (`bool-with`) (`t -> bool`) <>
+    >
+  >
+
+  +top {module Random: sig end}<
+    +p{\href(`https://github.com/nyuichi/satysfi-lib`){satysfi-lib}/random.satyhによって提供されます。}
+
+
+    +section {各種関数} <
+      +val (`random`) (`unit -> int`) <>
+      +val (`rand-max`) (`int`) <>
+    >
+  >
+>
