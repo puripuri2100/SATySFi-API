@@ -10,6 +10,7 @@ document (|
     * \href(`code.html`){ソースコード}
     * \href(`color.html`){色}
     * \href(`deco.html`){deco}
+    * \href(`random.html`){ランダム}
   }
   +p{Repository: \href(`https://github.com/puripuri2100/SATySFI-API`){puripuri2100/SATySFI-API}}
 >
