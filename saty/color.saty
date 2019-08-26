@@ -5,7 +5,7 @@ document (|
   title = {色};
   style-sheet = `main.css`;
 |) '<
-  +top {module Code: sig end}<
+  +top {module Color: sig end}<
     +p{色に関する関数を提供します。
     color.satyhによって提供され、\code(`@require: color`);とすると使うことができます。}
 
@@ -48,8 +48,8 @@ document (|
     >
   >
 
-  +top {module Code2: sig end}<
-    +p{\href(`https://github.com/nyuichi/satysfi-lib`){satysfi-lib}/typeset/color2.satyhによって提供されます。}
+  +top {module Color2: sig end}<
+    +p{\href(`https://github.com/nyuichi/satysfi-lib`){satysfi-lib}/color2.satyhによって提供されます。}
 
     +val (`srgb24`) (`int -> int -> int -> color`) <
       +p{RGB値の指定に、0から255までの整数を用いる関数です。}
