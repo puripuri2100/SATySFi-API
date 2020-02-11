@@ -17,7 +17,7 @@
         <div class="api-val">
           <span class="keyword">
           val 
-        </span>register-link-to-uri : string -> point -> length -> length-> length -> (length * color) option -> unit
+        </span>register-link-to-uri : string -> point -> length -> length -> length -> ((length * color)) option -> unit
           <p>
             URLと座標、幅、高さ、深さ、枠線を指定してURLへのハイパーリンクを生成します。
           </p>
@@ -25,7 +25,7 @@
         </div><div class="api-val">
           <span class="keyword">
           val 
-        </span>register-link-to-location : string -> point -> length -> length-> length -> (length * color) option -> unit
+        </span>register-link-to-location : string -> point -> length -> length -> length -> ((length * color)) option -> unit
           <p>
             キーと座標、幅、高さ、深さ、枠線を指定してジャンプ先へのハイパーリンクを生成します。
           </p>
@@ -55,7 +55,7 @@
           <h1>コマンド</h1>
           <div class="api-val">
             <span class="keyword">
-            val 
+            direct 
           </span>\href : [(length * color)?; string; inline-text] inline-cmd
             <p>
               第一引数にURLを、第二引数に文字列を入れると、URL先に飛べる文字列が出力されます。
@@ -71,7 +71,7 @@
           <div class="api-val">
             <span class="keyword">
             val 
-          </span>link-to-uri-frame : string -> (length * color) option -> deco-set
+          </span>link-to-uri-frame : string -> ((length * color)) option -> deco-set
             <p>
               URLとハイパーリンク部分を囲う枠の色と太さの情報を与えると<span class="code-inline"><code>deco-set</code></span>を返してくれます。
               この<span class="code-inline"><code>deco-set</code></span>を<span class="code-inline"><code>inline-frame-breakable</code></span>等で処理すると、ハイパーリンク部分が生成されます。
@@ -83,7 +83,7 @@
           </div><div class="api-val">
             <span class="keyword">
             val 
-          </span>link-to-location-frame : string -> (length * color) option -> deco-set
+          </span>link-to-location-frame : string -> ((length * color)) option -> deco-set
             <p>
               文書内のハイパーリンクに関する関数です。
               <span class="code-inline"><code>link-to-uri-frame</code></span>と似た使い方ですが、第一引数にはURLではなく後述する“キー”を入れます。

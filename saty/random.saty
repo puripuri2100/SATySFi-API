@@ -1,5 +1,10 @@
 @import: ../packages/satysfi-api
 
+open Type in
+
+let t = tMake `t`
+
+in
 
 document (|
   title = {色};
@@ -10,20 +15,20 @@ document (|
     \href(`https://github.com/zr-tex8r/satysfi-zrbase`){satysfi-zrbase}/zrandom0.satyhによって提供されます。}
 
     +section {型} <
-      +type (`t`) (`(int ref) list`) <>
+      +type (`t`) (tL(tREF(tI))) <>
     >
 
     +section {各種関数}<
-      +val (`init`) (`int -> unit`) <>
-      +val (`bits`) (`unit -> int`) <>
-      +val (`int`) (`int -> int`) <>
-      +val (`float`) (`float -> float`) <>
-      +val (`bool`) (`unit -> bool`) <>
-      +val (`create`) (`int -> t`) <>
-      +val (`bits-with`) (`t -> int`) <>
-      +val (`int-with`) (`t -> int -> int`) <>
-      +val (`float-with`) (`t -> float -> float`) <>
-      +val (`bool-with`) (`t -> bool`) <>
+      +val (`init`) (tI --> tU) <>
+      +val (`bits`) (tU --> tI) <>
+      +val (`int`) (tI --> tI) <>
+      +val (`float`) (tFL --> tFL) <>
+      +val (`bool`) (tU --> tB) <>
+      +val (`create`) (tI --> t) <>
+      +val (`bits-with`) (t --> tI) <>
+      +val (`int-with`) (t --> tI --> tI) <>
+      +val (`float-with`) (t --> tFL --> tFL) <>
+      +val (`bool-with`) (t --> tB) <>
     >
   >
 
@@ -32,8 +37,8 @@ document (|
 
 
     +section {各種関数} <
-      +val (`random`) (`unit -> int`) <>
-      +val (`rand-max`) (`int`) <>
+      +val (`random`) (tU --> tI) <>
+      +val (`rand-max`) (tI) <>
     >
   >
 >

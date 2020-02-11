@@ -53,7 +53,7 @@
           </div><div class="api-val">
             <span class="keyword">
             val 
-          </span>line-break : bool -> bool -> context -> inline-boxes
+          </span>line-break : bool -> bool -> context -> inline-text -> inline-boxes
             <p>
               <span class="code-inline"><code>inline-boxes</code></span>型を<span class="code-inline"><code>block-boxes</code></span>型に変換します。
             </p>
@@ -96,7 +96,7 @@
           </div><div class="api-val">
             <span class="keyword">
             val 
-          </span>inline-graphics : length -> length -> length -> (point -> graphics list) -> inline-boxes
+          </span>inline-graphics : length -> length -> length -> (point -> (grahpics) list) -> inline-boxes
             <p>
               横幅・高さ・深さと、座標を元にグラフィックを返す関数を与えることで<span class="code-inline"><code>graphics</code></span>を<span class="code-inline"><code>inline-boxes</code></span>に変換できます。
             </p>
@@ -104,7 +104,7 @@
           </div><div class="api-val">
             <span class="keyword">
             val 
-          </span>inline-graphics-outer : length -> length -> length -> (length -> point -> graphics list) -> inline-boxes
+          </span>inline-graphics-outer : length -> length -> length -> (length -> point -> (grahpics) list) -> inline-boxes
             <p>
               詳細不明
             </p>
@@ -163,7 +163,7 @@
           </div><div class="api-val">
             <span class="keyword">
             val 
-          </span>script-guard-both : script -> script -> inline-boxes -> inlein-boxes
+          </span>script-guard-both : script -> script -> inline-boxes -> inline-boxes
             <p>
               前後に違う文字体系が来るときに、そのスペーシングを調節できる。
             </p>
@@ -171,7 +171,7 @@
           </div><div class="api-val">
             <span class="keyword">
             val 
-          </span>get-leftmost-script : inline-boxes -> script option
+          </span>get-leftmost-script : inline-boxes -> (script) option
             <p>
               その<span class="code-inline"><code>inline-boxes</code></span>がどの文字体系なのかを取得する
             </p>
@@ -179,7 +179,7 @@
           </div><div class="api-val">
             <span class="keyword">
             val 
-          </span>get-leftmost-script : inline-boxes -> script option
+          </span>get-leftmost-script : inline-boxes -> (script) option
             <p>
               その<span class="code-inline"><code>inline-boxes</code></span>の左側がどの文字体系なのかを取得する
             </p>
@@ -187,7 +187,7 @@
           </div><div class="api-val">
             <span class="keyword">
             val 
-          </span>get-leftmost-script : inline-boxes -> script option
+          </span>get-leftmost-script : inline-boxes -> (script) option
             <p>
               その<span class="code-inline"><code>inline-boxes</code></span>の右側がどの文字体系なのかを取得する
             </p>
@@ -203,7 +203,7 @@
           </div><div class="api-val">
             <span class="keyword">
             val 
-          </span>get-natural-metrics : inline-boxes -> (length, length, length)
+          </span>get-natural-metrics : inline-boxes -> (length * length * length)
             <p>
               その<span class="code-inline"><code>inline-boxes</code></span>の横幅・高さ・深さをタプルで返します。
             </p>
@@ -236,7 +236,7 @@
           </div><div class="api-val">
             <span class="keyword">
             val 
-          </span>inline-frame-fixed : length -> paddings -> deco -> inline-boxes -> inline-boxes
+          </span>inline-frame-fixed : length -> pads -> deco -> inline-boxes -> inline-boxes
             <p>
               枠の幅、余白指定、描画指定、内容をそれぞれ入れることで枠で囲まれた部分を作ります。
             </p>
@@ -247,7 +247,7 @@
           </div><div class="api-val">
             <span class="keyword">
             val 
-          </span>inline-frame-breakable : paddings -> deco-set -> inline-boxes -> inline-boxes
+          </span>inline-frame-breakable : pads -> deco-set -> inline-boxes -> inline-boxes
             <p>
               余白、描画指定、内容をそれぞれ入れることで
               途中で行分割可能な枠で囲まれた部分を作ります。内容のグルーは行分割に合わせて伸び縮みします。
@@ -262,7 +262,7 @@
           <div class="api-val">
             <span class="keyword">
             val 
-          </span>(++) : inlein-boxes -> inlein-boxes -> inlein-boxes
+          </span>(++) : inline-boxes -> inline-boxes -> inline-boxes
             <p>
               <span class="code-inline"><code>inlein-boxes</code></span>同士を横に繋げます。
             </p>
@@ -270,7 +270,7 @@
           </div><div class="api-val">
             <span class="keyword">
             val 
-          </span>hook-page-break : ((|page-number:int|) -> point -> unit) -> inline-boxes
+          </span>hook-page-break : ((| page-number : int |) -> point -> unit) -> inline-boxes
             <p>
               ページ番号を元に何かを行う関数を行えることで副作用を起こします。返される<span class="code-inline"><code>inline-boxes</code></span>は<span class="code-inline"><code>inline-nil</code></span>と同じ挙動をします。
             </p>
@@ -278,7 +278,7 @@
           </div><div class="api-val">
             <span class="keyword">
             val 
-          </span>line-stack-top : inline-boxes list -> inline-boxes
+          </span>line-stack-top : (inline-boxes) list -> inline-boxes
             <p>
               詳細不明
             </p>
@@ -286,7 +286,7 @@
           </div><div class="api-val">
             <span class="keyword">
             val 
-          </span>line-stack-bottom : inline-boxes list -> inline-boxes
+          </span>line-stack-bottom : (inline-boxes) list -> inline-boxes
             <p>
               詳細不明
             </p>

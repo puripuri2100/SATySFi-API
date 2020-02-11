@@ -2,6 +2,7 @@
 @require: option
 @require: html-base
 
+@import: type
 @import: itemize
 @import: code
 @import: url
@@ -23,9 +24,9 @@ module SATySFiAPI : sig
   direct +p : [inline-text] block-cmd
   direct +pn : [inline-text] block-cmd
   direct +top : [inline-text; block-text] block-cmd
-  direct +val : [string; string; block-text] block-cmd
+  direct +val : [string; Type.t; block-text] block-cmd
   direct +direct : [string; string; block-text] block-cmd
-  direct +type : [string; string; block-text] block-cmd
+  direct +type : [string; Type.t; block-text] block-cmd
   direct \type : [string] inline-cmd
 
 
@@ -177,8 +178,8 @@ let-block tinfo +top it-name bt-inner =
     )
 
 
-let-block tinfo +val s-name s-type bt-inner =
-  let s-val = keyword tinfo (s-nil `val `#) ^ s-name ^ #` : `# ^ s-type in
+let-block tinfo +val s-name t-type bt-inner =
+  let s-val = keyword tinfo (s-nil `val `#) ^ s-name ^ #` : `# ^ Type.to-string t-type in
   let s-inner tinfo = stringify-block tinfo bt-inner in
     HTMLBase.tag ?:([(`class`, `api-val`)]) tinfo `div` (fun tinfo ->
       s-val ^ break tinfo ^ s-inner tinfo
@@ -193,8 +194,8 @@ let-block tinfo +direct s-name s-type bt-inner =
     )
 
 
-let-block tinfo +type s-name s-type bt-inner =
-  let s-type = keyword tinfo (s-nil `type `# ) ^ s-name ^ #` : `# ^ s-type in
+let-block tinfo +type s-name t-type bt-inner =
+  let s-type = keyword tinfo (s-nil `type `# ) ^ s-name ^ #` : `# ^ Type.to-string t-type in
   let s-inner tinfo = stringify-block tinfo bt-inner in
     HTMLBase.tag ?:([(`class`, `api-type`)]) tinfo `div` (fun tinfo ->
       s-type ^ break tinfo ^ s-inner tinfo

@@ -41,7 +41,7 @@
           </div><div class="api-val">
             <span class="keyword">
             val 
-          </span>inline-frame-fixed : length -> paddings -> deco -> inline-boxes -> inline-boxes
+          </span>inline-frame-fixed : length -> pads -> deco -> inline-boxes -> inline-boxes
             <p>
               枠の幅、余白指定、描画指定、内容をそれぞれ入れることで枠で囲まれた部分を作ります。
             </p>
@@ -55,7 +55,7 @@
           <div class="api-val">
             <span class="keyword">
             val 
-          </span>inline-frame-breakable : paddings -> deco-set -> inline-boxes -> inline-boxes
+          </span>inline-frame-breakable : pads -> deco-set -> inline-boxes -> inline-boxes
             <p>
               余白、描画指定、内容をそれぞれ入れることで
               途中で行分割可能な枠で囲まれた部分を作ります。内容のグルーは行分割に合わせて伸び縮みします。
@@ -67,7 +67,7 @@
           </div><div class="api-val">
             <span class="keyword">
             val 
-          </span>block-frame-breakable : context -> paddings -> deco-set -> (context -> block-boxes) -> block-boxes
+          </span>block-frame-breakable : context -> pads -> deco-set -> (context -> block-boxes) -> block-boxes
             <p>
               context、余白、描画指定、中身をそれぞれ入れることで
               途中でページ分割可能な枠で囲まれた部分を作ります。

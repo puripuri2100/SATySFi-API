@@ -1,0 +1,151 @@
+@require: list
+
+module Type: sig
+  type t
+  val to-string : t -> string
+  val (-->) : t -> t -> t
+  val tCTX : t
+  val tU : t
+  val tI : t
+  val tFL : t
+  val tS : t
+  val tIT : t
+  val tIB : t
+  val tBT : t
+  val tBB : t
+  val tB : t
+  val tLN : t
+  val tSCR : t
+  val tRE : t
+  val tPATH: t
+  val tGR : t
+  val tMATH: t
+  val tPT : t
+  val tCLR : t
+  val tDECO : t
+  val tDECOSET : t
+  val tPADS : t
+  val tIMG : t
+  val tL : t -> t
+  val tOPT : t -> t
+  val tPROD : t list -> t
+  val tREF : t -> t
+  val tFUN : t -> t
+  val tREC : (string * t) list -> t
+  val tMake : string -> t
+
+end = struct
+
+  type t =
+    | Context
+    | Unit
+    | Int
+    | Float
+    | String
+    | InlineText
+    | InlineBoxes
+    | BlockText
+    | BlockBoxes
+    | Bool
+    | Length
+    | Script
+    | Path
+    | Graphics
+    | Math
+    | Regexp
+    | Point
+    | Color
+    | Deco
+    | DecoSet
+    | Pads
+    | Image
+    | List of t
+    | Option of t
+    | Tuple of t list
+    | Ref of t
+    | Func of t
+    | To of t * t
+    | Record of (string * t) list
+    | Make of string
+
+  let-rec to-string t =
+    let join1 i s1 s2 =
+      if i <= 0 then
+        s2
+      else
+        s1 ^ #` * `# ^ s2
+    in
+    let join2 i s1 s2 =
+      if i <= 0 then
+        s2
+      else
+        s1 ^ `; `# ^ s2
+    in
+    let f (s, t) =
+      s ^ #` : `# ^ to-string t
+    in
+    match t with
+    | Context -> `context`
+    | Unit -> `unit`
+    | Int -> `int`
+    | Float -> `float`
+    | String -> `string`
+    | InlineText -> `inline-text`
+    | InlineBoxes -> `inline-boxes`
+    | BlockText -> `block-text`
+    | BlockBoxes -> `block-boxes`
+    | Bool -> `bool`
+    | Length -> `length`
+    | Script -> `script`
+    | Path -> `path`
+    | Graphics -> `grahpics`
+    | Math -> `math`
+    | Regexp -> `regexp`
+    | Point -> `point`
+    | Color -> `color`
+    | Deco -> `deco`
+    | DecoSet -> `deco-set`
+    | Pads -> `pads`
+    | Image -> `image`
+    | List(t) -> `(` ^ to-string t ^ `)` ^ #` list`
+    | Option(t) -> `(` ^ to-string t ^ `)` ^ #` option`
+    | Tuple(l) -> `(` ^ (List.map to-string l |> List.fold-lefti join1 ` `) ^ `)`
+    | Ref(t) -> to-string t ^ #` ref`
+    | Func (t) -> `(` ^ to-string t ^ `)`
+    | To(t1, t2) -> to-string t1 ^ #` -> `# ^ to-string t2
+    | Record(l) -> `(| `# ^ (List.map f l |> List.fold-lefti join2 ` `) ^ #` |)`
+    | Make(s) -> s
+
+  let (-->) t1 t2 = To(t1, t2)
+  let tCTX = Context
+  let tU = Unit
+  let tI = Int
+  let tFL = Float
+  let tS = String
+  let tIT = InlineText
+  let tIB = InlineBoxes
+  let tBT = BlockText
+  let tBB = BlockBoxes
+  let tB = Bool
+  let tLN = Length
+  let tSCR = Script
+  let tPATH = Path
+  let tGR = Graphics
+  let tMATH = Math
+  let tRE = Regexp
+  let tPT = Point
+  let tCLR = Color
+  let tDECO = Deco
+  let tDECOSET = DecoSet
+  let tPADS = Pads
+  let tIMG = Image
+
+  let tL t = List(t)
+  let tOPT t = Option(t)
+  let tPROD l = Tuple(l)
+  let tREF t = Ref(t)
+  let tFUN t = Func(t)
+  let tREC l = Record(l)
+  let tMake s = Make(s)
+
+end

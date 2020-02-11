@@ -1,5 +1,6 @@
 @import: ../packages/satysfi-api
 
+open Type in
 
 document (|
   title = {枠装飾};
@@ -9,30 +10,30 @@ document (|
     +p{枠装飾に関するプリミティブです。}
 
     +section{deco} <
-      +val (`inline-frame-outer`) (`pads -> deco -> inline-boxes -> inline-boxes`) <
+      +val (`inline-frame-outer`) (tPADS --> tDECO --> tIB --> tIB) <
         +p{余白指定、描画指定、内容をそれぞれ入れることで枠で囲まれた部分を作ります。}
         +p{枠内で行分割されることはありませんが、内側の要請に合わせて内容に含まれるグルーが伸び縮みします。}
       >
 
-      +val (`inline-frame-inner`) (`pads -> deco -> inline-boxes -> inline-boxes`) <
+      +val (`inline-frame-inner`) (tPADS --> tDECO --> tIB --> tIB) <
         +p{余白指定、描画指定、内容をそれぞれ入れることで枠で囲まれた部分を作ります。}
         +p{枠内で行分割されることはありません。また、内容に含まれるグルーが伸び縮みすることはありません。}
       >
 
-      +val (`inline-frame-fixed`) (`length -> paddings -> deco -> inline-boxes -> inline-boxes`) <
+      +val (`inline-frame-fixed`) (tLN --> tPADS --> tDECO --> tIB --> tIB) <
         +p{枠の幅、余白指定、描画指定、内容をそれぞれ入れることで枠で囲まれた部分を作ります。}
         +p{枠内で行分割されることはありませんが、最初に入れた枠の幅に合わせて内容に含まれるグルーが伸び縮みします。}
       >
     >
 
     +section{deco-set} <
-      +val (`inline-frame-breakable`) (`paddings -> deco-set -> inline-boxes -> inline-boxes`) <
+      +val (`inline-frame-breakable`) (tPADS --> tDECOSET --> tIB --> tIB) <
         +p{余白、描画指定、内容をそれぞれ入れることで
           途中で行分割可能な枠で囲まれた部分を作ります。内容のグルーは行分割に合わせて伸び縮みします。}
         +p{\code(`inline-frame-breakable`);に与えられるdeco-setはそれぞれ「口」形・「匚」形・「二」形・「コ」形のグラフィックスを返すような関数です。}
       >
 
-      +val (`block-frame-breakable`) (`context -> paddings -> deco-set -> (context -> block-boxes) -> block-boxes`) <
+      +val (`block-frame-breakable`) (tCTX --> tPADS --> tDECOSET --> tFUN(tCTX --> tBB) --> tBB) <
         +p{context、余白、描画指定、中身をそれぞれ入れることで
         途中でページ分割可能な枠で囲まれた部分を作ります。}
         +p{\code(`block-frame-breakable`);に与えられるdeco-setはそれぞれ「口」形・「冂」形・「｜｜」形・「凵」形のグラフィックスを返すような関数です。}
@@ -45,11 +46,11 @@ document (|
     +p{deco.satyhによって提供され、\code(`@require: deco`);とすると使うことができます。}
 
     +section{関数} <
-      +val (`empty`) (`deco`) <
+      +val (`empty`) (tDECO) <
         +p{何も描画されない\type(`deco`);型です。}
       >
 
-      +val (`simple-frame`) (`length -> color -> color -> deco`) <
+      +val (`simple-frame`) (tLN --> tCLR --> tCLR --> tDECO) <
         +p{線の太さ、線の色、枠内の色を入れるとdecoが返ってきます。}
       >
     >
@@ -60,15 +61,15 @@ document (|
     +p{hdecoset.satyhによって提供され、\code(`@require: hdecoset`);とすると使うことができます。}
 
     +section{関数}<
-      +val (`empty`) (`deco-set`) <
+      +val (`empty`) (tDECOSET) <
         +p{何も描画されない\type(`deco-set`);型です。}
       >
 
-      +val (`simple-frame-stroke`) (`length -> color -> deco-set`) <
+      +val (`simple-frame-stroke`) (tLN --> tCLR --> tDECOSET) <
         +p{線の太さ、線の色を入れるとdeco-setが返ってきます。}
       >
 
-      +val (`rectangle-round-fill`) (`length -> length -> color -> deco-set`) <
+      +val (`rectangle-round-fill`) (tLN --> tLN --> tCLR --> tDECOSET) <
         +p{四つ角が弧になるdeco-setを返します。}
       >
     >
@@ -79,17 +80,17 @@ document (|
     +p{vdecoset.satyhによって提供され、\code(`@require: vdecoset`);とすると使うことができます。}
 
     +section{関数}<
-      +val (`empty`) (`deco-set`) <
+      +val (`empty`) (tDECOSET) <
         +p{何も描画されない\type(`deco-set`);型です。}
       >
 
-      +val (`simple-frame-stroke`) (`length -> color -> deco-set`) <>
+      +val (`simple-frame-stroke`) (tLN --> tCLR --> tDECOSET) <>
 
-      +val (`simple-frame`) (`length -> color -> color -> deco-set`) <>
+      +val (`simple-frame`) (tLN --> tCLR --> tCLR --> tDECOSET) <>
 
-      +val (`paper`) (`deco-set`) <>
+      +val (`paper`) (tDECOSET) <>
 
-      +val (`quote-round`) (`length -> length -> color -> deco-set`) <>
+      +val (`quote-round`) (tLN --> tLN --> tCLR --> tDECOSET) <>
     >
   >
 >
