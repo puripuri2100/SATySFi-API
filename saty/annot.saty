@@ -26,7 +26,7 @@ document (|
     +p{annot.satyhによって提供され、\code(`@require: annot`);とすると使うことができます。}
 
     +section {コマンド}<
-      +direct(`\href`) (`[(length * color)?; string; inline-text] inline-cmd`) <
+      +direct(`\href`) ([tO(tPROD[tLN;tCLR]); tS; tIT]) (InlineCmd) <
         +p{第一引数にURLを、第二引数に文字列を入れると、URL先に飛べる文字列が出力されます。}
         +p{オプション引数でハイパーリンク部分を囲う枠の色と太さを調節できます。
         この枠は印刷時には消えます。}
