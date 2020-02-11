@@ -79,12 +79,12 @@
           <div class="api-val">
             <span class="keyword">
             direct 
-          </span>+code : [syntax-def?; string] block-cmd
+          </span>+code : [(syntax-def)?; string] block-cmd
             
           </div><div class="api-val">
             <span class="keyword">
             direct 
-          </span>+console : [syntax-def?; string] block-cmd
+          </span>+console : [(syntax-def)?; string] block-cmd
             
           </div><div class="api-val">
             <span class="keyword">
@@ -94,12 +94,12 @@
           </div><div class="api-val">
             <span class="keyword">
             direct 
-          </span>\console : [syntax-def?; string] inline-cmd
+          </span>\console : [(syntax-def)?; string] inline-cmd
             
           </div><div class="api-val">
             <span class="keyword">
             direct 
-          </span>\d-code : [syntax-def?; string] inline-cmd
+          </span>\d-code : [(syntax-def)?; string] inline-cmd
             
           </div>
         </section><section>
@@ -115,7 +115,7 @@
           </div><div class="api-val">
             <span class="keyword">
             val 
-          </span>scheme : deco-set -> color -> context -> (syntax-def -> string -> block-boxes) option
+          </span>scheme : deco-set -> color -> context -> (syntax-def) option -> string -> block-boxes
             <p>
               コードを表示する部分の装飾、文字色、context、シンタックスハイライト、コード
               をそれぞれ与えることでソースコードが

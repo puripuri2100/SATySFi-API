@@ -11,16 +11,16 @@ document (|
     +p{code.satyhによって提供され、\code(`@require: code`);とすると使うことができます。}
 
     +section {コマンド}<
-      +direct (`+code`) (`[string] block-cmd`) <
+      +direct (`+code`) ([tS]) (BlockCmd) <
       >
 
-      +direct (`+console`) (`[string] block-cmd`) <>
+      +direct (`+console`) ([tS]) (BlockCmd)  <>
 
-      +direct (`\code`) (`[string] inline-cmd`) <>
+      +direct (`\code`) ([tS]) (InlineCmd)  <>
 
-      +direct (`\console`) (`[string] inline-cmd`) <>
+      +direct (`\console`) ([tS]) (InlineCmd)  <>
 
-      +direct (`\d-code`) (`[string] inline-cmd`) <>
+      +direct (`\d-code`) ([tS]) (InlineCmd)  <>
     >
     +section {作成用関数}<
       +val (`scheme`) (tDECOSET --> tCLR --> tCTX --> tS --> tBB) <
@@ -35,22 +35,22 @@ document (|
     +p{\href(`https://github.com/nyuichi/satysfi-lib`){satysfi-lib}/typeset/code2.satyhによって提供されます。}
 
     +section {コマンド}<
-      +direct (`+code`) (`[syntax-def?; string] block-cmd`) <
+      +direct (`+code`) ([tO(tMake(`syntax-def`));tS]) (BlockCmd)  <
       >
 
-      +direct (`+console`) (`[syntax-def?; string] block-cmd`) <>
+      +direct (`+console`) ([tO(tMake(`syntax-def`));tS]) (BlockCmd)  <>
 
-      +direct (`\code`) (`[string] inline-cmd`) <>
+      +direct (`\code`) ([tS]) (InlineCmd)  <>
 
-      +direct (`\console`) (`[syntax-def?; string] inline-cmd`) <>
+      +direct (`\console`) ([tO(tMake(`syntax-def`));tS]) (InlineCmd)  <>
 
-      +direct (`\d-code`) (`[syntax-def?; string] inline-cmd`) <>
+      +direct (`\d-code`) ([tO(tMake(`syntax-def`));tS]) (InlineCmd)  <>
     >
     +section {作成用関数}<
       +type (`syntax-def`) (tREC[(`groups`, tL(tREC[(`color`, tCLR); (`keywords`, tL(tS))])); (`ident-regexp`, tMake(`RegExp.t`))])<
         +p{ソースコードのシンタックスハイライトを決めるための型です。}
       >
-      +val (`scheme`) (tDECOSET --> tCLR --> tCTX --> tOPT (tMake(`syntax-def`) --> tS --> tBB)) <
+      +val (`scheme`) (tDECOSET --> tCLR --> tCTX --> tOPT (tMake(`syntax-def`)) --> tS --> tBB) <
         +p{コードを表示する部分の装飾、文字色、context、シンタックスハイライト、コード
         をそれぞれ与えることでソースコードが
         組まれた\type(`block-boxes`);を得ることができます。}
