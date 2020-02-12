@@ -1,0 +1,64 @@
+@import: ../packages/satysfi-api
+
+open Type in
+
+document (|
+  title = {インライン};
+  style-sheet = `main.css`;
+|) '<
+  +top {primitive} <
+    +section{変換系}<
+      +p{他の型から変換したり他の型へ変換する系のプリミティブです。}
+      +val(`line-break`) (tB --> tB --> tCTX --> tIT --> tIB) <
+        +p{\type(tIB);型を\type(tBB);型に変換します。}
+        +p{最初に与える2つの真偽値は、それぞれ「そのブロックの直前での改行を許可するか」と「直後での改行を許可するか」です。}
+      >
+      +val (`read-block`) (tCTX --> tBT --> tBB)  <
+        +p{\type(tBT);を\type(tBB);型に変換します。
+        この時に与える\type(tCTX);型によって出力される\type(tBB);の行送りや分割位置などを変更することができます。}
+      >
+      +val (`embed-block-breakable`) (tCTX --> tBB --> tIB) <
+        +p{\type(tBB);型を一時的に\type(tIB);型に擬態させる役割を持ちます。}
+      >
+      +val (`add-footnote`) (tBB --> tIB) <
+        +p{脚注を作成します。}
+      >
+      +val (`embed-block-top`) (tCTX --> tLN --> tFUN(tCTX --> tBB) --> tIB) <
+        +p{\type(tBB);型を指定した横幅の\type(tIB);型に変換します。この時、一番上の行が他の行と同じ高さになるように変換されます。}
+      >
+      +val (`embed-block-bottom`) (tCTX --> tLN --> tFUN(tCTX --> tBB) --> tIB) <
+        +p{\type(tBB);型を指定した横幅の\type(tIB);型に変換します。この時、一番下の行が他の行と同じ高さになるように変換されます。}
+      >
+      +val (`page-break`) (tPG --> tFUN(tREC[(`page-number`,tI)] --> tREC[(`text-height`,tLN);(`text-origin`,tPT)]) --> tFUN(tREC[(`page-number`,tI)] --> tREC[(`header-context`,tBB);(`header-origin`,tPT);(`footer-content`,tBB);(`footer-origin`,tPT)]) --> tBB --> tDOC)<
+        +p{ページ番号を元にテキストの位置を返す関数とヘッダーとフッターの位置を返す関数と一緒に本文となる\type(tBB);を渡すことでPDF出力モードの時に最終的に作らなければいけない\type(tDOC);型を得られます。}
+      >
+      +val(`page-break-two-column`) (tPG --> tLN --> tFUN(tU --> tBB) --> tFUN(tREC[(`page-number`,tI)] --> tREC[(`text-height`,tLN);(`text-origin`,tPT)]) --> tFUN(tREC[(`page-number`,tI)] --> tREC[(`header-context`,tBB);(`header-origin`,tPT);(`footer-content`,tBB);(`footer-origin`,tPT)]) --> tBB --> tDOC)<
+        +p{\code(`page-break`);の2段組用のプリミティブです。}
+      >
+    >
+    +section{枠組み}<
+      +val (`block-frame-breakable`) (tCTX --> tPADS --> tDECOSET --> tFUN(tCTX --> tBB) --> tBB) <
+        +p{context、余白、描画指定、中身をそれぞれ入れることで
+        途中でページ分割可能な枠で囲まれた部分を作ります。}
+        +p{\code(`block-frame-breakable`);に与えられるdeco-setはそれぞれ「口」形・「冂」形・「｜｜」形・「凵」形のグラフィックスを返すような関数です。}
+      >
+    >
+    +section{その他}<
+      +val (`(+++)`) (tBB --> tBB --> tBB) <
+        +p{\type(tBB);同士を横に繋げます。}
+      >
+      +val (`block-nil`) (tBB) <
+        +p{何もない\type(tBB);を作ります。}
+      >
+      +val (`clear-page`) (tBB) <
+        +p{改行する\type(tBB);を作ります。}
+      >
+      +val (`block-skip`) (tLN --> tBB) <
+        +p{指定した長さの分だけ縦の空白を作ります。}
+      >
+      +val (`get-natural-length`) (tBB --> tLN)<
+        +p{\type(tBB);の横幅を取得します。}
+      >
+    >
+  >
+>

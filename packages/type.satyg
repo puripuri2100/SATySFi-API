@@ -26,6 +26,8 @@ module Type: sig
   val tDECOSET : t
   val tPADS : t
   val tIMG : t
+  val tPG : t
+  val tDOC : t
   val tL : t -> t
   val tOPT : t -> t
   val tO : t -> t
@@ -34,6 +36,7 @@ module Type: sig
   val tFUN : t -> t
   val tREC : (string * t) list -> t
   val tMake : string -> t
+  val tVAR : string -> t
 
 end = struct
 
@@ -60,6 +63,8 @@ end = struct
     | DecoSet
     | Pads
     | Image
+    | Page
+    | Document
     | List of t
     | Option of t
     | O of t
@@ -69,6 +74,7 @@ end = struct
     | To of t * t
     | Record of (string * t) list
     | Make of string
+    | Var of string
 
   let-rec to-string t =
     let join1 i s1 s2 =
@@ -109,6 +115,8 @@ end = struct
     | DecoSet -> `deco-set`
     | Pads -> `pads`
     | Image -> `image`
+    | Page -> `page`
+    | Document -> `document`
     | List(t) -> `(` ^ to-string t ^ `)` ^ #` list`
     | Option(t) -> `(` ^ to-string t ^ `)` ^ #` option`
     | O(t) -> `(` ^ to-string t ^ `)` ^ `?`
@@ -118,6 +126,7 @@ end = struct
     | To(t1, t2) -> to-string t1 ^ #` -> `# ^ to-string t2
     | Record(l) -> `(| `# ^ (List.map f l |> List.fold-lefti join2 ` `) ^ #` |)`
     | Make(s) -> s
+    | Var(s) -> `'` ^ s
 
   let (-->) t1 t2 = To(t1, t2)
   let tCTX = Context
@@ -142,6 +151,8 @@ end = struct
   let tDECOSET = DecoSet
   let tPADS = Pads
   let tIMG = Image
+  let tPG = Page
+  let tDOC = Document
 
   let tL t = List(t)
   let tOPT t = Option(t)
@@ -151,5 +162,6 @@ end = struct
   let tFUN t = Func(t)
   let tREC l = Record(l)
   let tMake s = Make(s)
+  let tVAR s = Var(s)
 
 end

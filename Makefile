@@ -21,5 +21,8 @@ deco:
 random:
 	satysfi --text-mode html saty/random.saty -o docs/random.html
 
-inline-text:
-	satysfi --text-mode html saty/inline-text.saty -o docs/inline-text.html
+inline:
+	satysfi --text-mode html saty/inline.saty -o docs/inline.html
+
+block:
+	satysfi --text-mode html saty/block.saty -o docs/block.html

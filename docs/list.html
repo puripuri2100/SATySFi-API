@@ -16,7 +16,7 @@
           <div class="api-val">
             <span class="keyword">
             val 
-          </span>nth : int -> 'a list -> 'a option
+          </span>nth : int -> ('a) list -> ('a) option
             <p>
               何番目の要素かを指定することでリストの中身を取り出せます。
               一番最初は0です。
@@ -31,7 +31,7 @@
           <div class="api-val">
             <span class="keyword">
             val 
-          </span>map : ('a -> 'b) -> 'a list -> 'b list
+          </span>map : ('a -> 'b) -> ('a) list -> ('b) list
             <p>
               リストの要素すべてに関数を適用したリストを返します。
             </p>
@@ -39,7 +39,7 @@
           </div><div class="api-val">
             <span class="keyword">
             val 
-          </span>mapi : (int -> 'a -> 'b) -> 'a list -> 'b list
+          </span>mapi : (int -> 'a -> 'b) -> ('a) list -> ('b) list
             <p>
               リストの要素すべてに関数を適用したリストを返します。
             </p>

@@ -12,7 +12,8 @@ document (|
     * \href(`deco.html`){deco}
     * \href(`random.html`){ランダム}
 %    * \href(`list.html`){リスト（未完成）}
-    * \href(`inline-text.html`){インライン}
+    * \href(`inline.html`){インライン}
+    * \href(`block.html`){ブロック}
   }
   +p{Repository: \href(`https://github.com/puripuri2100/SATySFI-API`){puripuri2100/SATySFI-API}}
 >

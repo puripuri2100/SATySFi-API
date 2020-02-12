@@ -1,12 +1,14 @@
 @import: ../packages/satysfi-api
 
+open Type in
+
 document (|
   title = {ハイパーリンク};
   style-sheet = `main.css`;
 |) '<
   +top {module List: sig end} <
     +section{要素を取得する}<
-      +val (`nth`) (`int -> 'a list -> 'a option`)  <
+      +val (`nth`) (tI --> tL(tVAR(`a`)) --> tOPT(tVAR(`a`)))  <
         +p{何番目の要素かを指定することでリストの中身を取り出せます。
         一番最初は0です。}
         +p{指定した場所に要素が無い場合は\code(`None`);が返ってきます。}
@@ -14,11 +16,11 @@ document (|
     >
 
     +section{関数を適用する}<
-      +val (`map`) (`('a -> 'b) -> 'a list -> 'b list`) <
+      +val (`map`) (tFUN(tVAR(`a`) --> tVAR(`b`)) --> tL(tVAR(`a`)) --> tL(tVAR(`b`))) <
         +p{リストの要素すべてに関数を適用したリストを返します。}
       >
 
-      +val (`mapi`) (`(int -> 'a -> 'b) -> 'a list -> 'b list`) <
+      +val (`mapi`) (tFUN(tI --> tVAR(`a`) --> tVAR(`b`)) --> tL(tVAR(`a`)) --> tL(tVAR(`b`))) <
         +p{リストの要素すべてに関数を適用したリストを返します。}
         +p{適用する関数でいくつ目の要素なのかを考慮することができます。}
       >
