@@ -30,7 +30,7 @@ module SATySFiAPI : sig
   direct +val : [string; Type.t; block-text] block-cmd
   direct +direct : [string; Type.t list; cmd; block-text] block-cmd
   direct +type : [string; Type.t; block-text] block-cmd
-  direct \type : [string] inline-cmd
+  direct \type : [Type.t] inline-cmd
 
 
 end = struct
@@ -219,9 +219,9 @@ let-block tinfo +type s-name t-type bt-inner =
     )
 
 
-let-inline tinfo \type s-type =
+let-inline tinfo \type t-type =
   HTMLBase.tag ?:([(`class`, `inline-type`)]) tinfo `span` (fun tinfo ->
-    s-type
+    Type.to-string t-type
   )
 
 end

@@ -34,8 +34,8 @@ document (|
     >
     +section {装飾用関数}<
       +val (`link-to-uri-frame`) (tS --> tOPT(tPROD[tLN; tCLR]) --> tDECOSET) <
-        +p{URLとハイパーリンク部分を囲う枠の色と太さの情報を与えると\code(`deco-set`);を返してくれます。
-        この\code(`deco-set`);を\code(`inline-frame-breakable`);等で処理すると、ハイパーリンク部分が生成されます。}
+        +p{URLとハイパーリンク部分を囲う枠の色と太さの情報を与えると\type(tDECOSET);を返してくれます。
+        この\type(tDECOSET);を\code(`inline-frame-breakable`);等で処理すると、ハイパーリンク部分が生成されます。}
         +p{\code(```link-to-url-frame `https://github.com/gfngfn/SATySFi` Some (0.5pt, Color.red) ```);のようにして使用します。}
       >
 
@@ -46,7 +46,7 @@ document (|
       >
 
       +val (`register-location-frame`) (tS --> tDECOSET) <
-        +p{キーを指定すると、\code(`deco-set`);が返ってきます。これを\code(`inline-frame-breakable`);等で処理すると、文書内ハイパーリンクのジャンプ先を作ることができます。
+        +p{キーを指定すると、\type(tDECOSET);が返ってきます。これを\code(`inline-frame-breakable`);等で処理すると、文書内ハイパーリンクのジャンプ先を作ることができます。
         ここで指定したキーと同じキーを\code(`link-to-location-frame`);で指定すると、そこから飛んでくることが可能になります。}
       >
     >

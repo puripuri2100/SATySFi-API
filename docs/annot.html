@@ -73,8 +73,12 @@
             val 
           </span>link-to-uri-frame : string -> ((length * color)) option -> deco-set
             <p>
-              URLとハイパーリンク部分を囲う枠の色と太さの情報を与えると<span class="code-inline"><code>deco-set</code></span>を返してくれます。
-              この<span class="code-inline"><code>deco-set</code></span>を<span class="code-inline"><code>inline-frame-breakable</code></span>等で処理すると、ハイパーリンク部分が生成されます。
+              URLとハイパーリンク部分を囲う枠の色と太さの情報を与えると<span class="inline-type">
+                deco-set
+              </span>を返してくれます。
+              この<span class="inline-type">
+                deco-set
+              </span>を<span class="code-inline"><code>inline-frame-breakable</code></span>等で処理すると、ハイパーリンク部分が生成されます。
             </p>
             <p>
               <span class="code-inline"><code>link-to-url-frame `https://github.com/gfngfn/SATySFi` Some (0.5pt, Color.red)</code></span>のようにして使用します。
@@ -97,7 +101,9 @@
             val 
           </span>register-location-frame : string -> deco-set
             <p>
-              キーを指定すると、<span class="code-inline"><code>deco-set</code></span>が返ってきます。これを<span class="code-inline"><code>inline-frame-breakable</code></span>等で処理すると、文書内ハイパーリンクのジャンプ先を作ることができます。
+              キーを指定すると、<span class="inline-type">
+                deco-set
+              </span>が返ってきます。これを<span class="code-inline"><code>inline-frame-breakable</code></span>等で処理すると、文書内ハイパーリンクのジャンプ先を作ることができます。
               ここで指定したキーと同じキーを<span class="code-inline"><code>link-to-location-frame</code></span>で指定すると、そこから飛んでくることが可能になります。
             </p>
             

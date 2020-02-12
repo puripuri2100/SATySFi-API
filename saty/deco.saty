@@ -42,12 +42,12 @@ document (|
   >
 
   +top {module Deco: sig end} <
-    +p{\type(`deco`);型に関する関数を提供します。}
+    +p{\type(tDECO);型に関する関数を提供します。}
     +p{deco.satyhによって提供され、\code(`@require: deco`);とすると使うことができます。}
 
     +section{関数} <
       +val (`empty`) (tDECO) <
-        +p{何も描画されない\type(`deco`);型です。}
+        +p{何も描画されない\type(tDECO);型です。}
       >
 
       +val (`simple-frame`) (tLN --> tCLR --> tCLR --> tDECO) <
@@ -57,12 +57,12 @@ document (|
   >
 
   +top {module HDecoSet: sig end} <
-    +p{\code(`inline-frame-breakable`);で処理する\type(`deco-set`);型に関する関数を提供します。}
+    +p{\code(`inline-frame-breakable`);で処理する\type(tDECOSET);型に関する関数を提供します。}
     +p{hdecoset.satyhによって提供され、\code(`@require: hdecoset`);とすると使うことができます。}
 
     +section{関数}<
       +val (`empty`) (tDECOSET) <
-        +p{何も描画されない\type(`deco-set`);型です。}
+        +p{何も描画されない\type(tDECOSET);型です。}
       >
 
       +val (`simple-frame-stroke`) (tLN --> tCLR --> tDECOSET) <
@@ -76,12 +76,12 @@ document (|
   >
 
   +top {module VDecoSet: sig end} <
-    +p{\code(`block-frame-breakable`);で処理する\type(`deco-set`);型に関する関数を提供します。}
+    +p{\code(`block-frame-breakable`);で処理する\type(tDECOSET);型に関する関数を提供します。}
     +p{vdecoset.satyhによって提供され、\code(`@require: vdecoset`);とすると使うことができます。}
 
     +section{関数}<
       +val (`empty`) (tDECOSET) <
-        +p{何も描画されない\type(`deco-set`);型です。}
+        +p{何も描画されない\type(tDECOSET);型です。}
       >
 
       +val (`simple-frame-stroke`) (tLN --> tCLR --> tDECOSET) <>

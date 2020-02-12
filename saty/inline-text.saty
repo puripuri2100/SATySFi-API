@@ -13,40 +13,40 @@ document (|
         +p{文字列をインラインに変換します。}
       >
       +val (`embed-math`) (tCTX --> tMATH --> tIB)<
-        +p{\code(`math`);型を\code(`inline-boxes`);型にして文章中に置くための唯一のプリミティブです。}
+        +p{\type(tMATH);型を\type(tIB);型にして文章中に置くための唯一のプリミティブです。}
       >
       +val (`extract-string`) (tIB --> tS) <
-        +p{\code(`inline-boxes`);を無理やり文字列に変換します。}
+        +p{\type(tIB);を無理やり文字列に変換します。}
       >
       +val (`read-inline`) (tCTX --> tIT --> tIB)  <
         +p{\code(`read-inline ctx {text}`);のようにして使います。
-        文字やコマンド以外の情報がない\code(`inline-text`);を\code(`inline-boxes`);型に変換します。
-        この時に与える\code(`context`);型によって出力される\code(`inline-boxes`);のフォントや色やフォントサイズを変更することができます。}
+        文字やコマンド以外の情報がない\type(tIT);を\type(tIB);型に変換します。
+        この時に与える\type(tCTX);型によって出力される\type(tIB);のフォントや色やフォントサイズを変更することができます。}
       >
       +val(`line-break`) (tB --> tB --> tCTX --> tIT --> tIB) <
-        +p{\code(`inline-boxes`);型を\code(`block-boxes`);型に変換します。}
+        +p{\type(tIB);型を\type(tBB);型に変換します。}
         +p{最初に与える2つの真偽値は、それぞれ「そのブロックの直前での改行を許可するか」と「直後での改行を許可するか」です。}
       >
       +val (`embed-block-breakable`) (tCTX --> tBB --> tIB) <
-        +p{\code(`block-boxes`);型を一時的に\code(`inline-boxes`);型に擬態させる役割を持ちます。}
+        +p{\type(tBB);型を一時的に\type(tIB);型に擬態させる役割を持ちます。}
       >
       +val (`add-footnote`) (tBB --> tIB) <
         +p{脚注を作成します。}
       >
       +val (`embed-block-top`) (tCTX --> tLN --> tFUN(tCTX --> tBB) --> tIB) <
-        +p{\code(`block-boxes`);型を指定した横幅の\code(`inline-boxes`);型に変換します。この時、一番上の行が他の行と同じ高さになるように変換されます。}
+        +p{\type(tBB);型を指定した横幅の\type(tIB);型に変換します。この時、一番上の行が他の行と同じ高さになるように変換されます。}
       >
       +val (`embed-block-bottom`) (tCTX --> tLN --> tFUN(tCTX --> tBB) --> tIB) <
-        +p{\code(`block-boxes`);型を指定した横幅の\code(`inline-boxes`);型に変換します。この時、一番下の行が他の行と同じ高さになるように変換されます。}
+        +p{\type(tBB);型を指定した横幅の\type(tIB);型に変換します。この時、一番下の行が他の行と同じ高さになるように変換されます。}
       >
       +val (`inline-graphics`) (tLN --> tLN --> tLN --> tFUN(tPT --> tL(tGR)) --> tIB)<
-        +p{横幅・高さ・深さと、座標を元にグラフィックを返す関数を与えることで\code(`graphics`);を\code(`inline-boxes`);に変換できます。}
+        +p{横幅・高さ・深さと、座標を元にグラフィックを返す関数を与えることで\type(tGR);を\type(tIB);に変換できます。}
       >
       +val (`inline-graphics-outer`) (tLN --> tLN --> tLN --> tFUN(tLN --> tPT --> tL(tGR)) --> tIB)<
         +p{詳細不明}
       >
       +val (`use-image-by-width`) (tIMG --> tLN --> tIB) <
-        +p{PDFや画像のパスから作成した\code(`image`);型と横幅を与えることで\code(`inline-boxes`);を作成します。}
+        +p{PDFや画像のパスから作成した\type(tIMG);型と横幅を与えることで\type(tIB);を作成します。}
       >
     >
 
@@ -55,7 +55,7 @@ document (|
         +p{周囲の要請に合わせてどこまでも伸びるが行分割されることのない空白です。}
       >
       +val (`inline-fil`) (tIB) <
-        +p{“何も起こさない”\code(`inline-boxes`);です。}
+        +p{“何も起こさない”\type(tIB);です。}
       >
       +val (`inline-skip`) (tLN --> tIB) <
         +p{指定した長さの分だけ改行されない空白を作ります。}
@@ -70,19 +70,19 @@ document (|
         +p{前後に違う文字体系が来るときに、そのスペーシングを調節できる。}
       >
       +val (`get-leftmost-script`) (tIB --> tOPT(tSCR)) <
-        +p{その\code(`inline-boxes`);がどの文字体系なのかを取得する}
+        +p{その\type(tIB);がどの文字体系なのかを取得する}
       >
       +val (`get-leftmost-script`)(tIB --> tOPT(tSCR)) <
-        +p{その\code(`inline-boxes`);の左側がどの文字体系なのかを取得する}
+        +p{その\type(tIB);の左側がどの文字体系なのかを取得する}
       >
       +val (`get-leftmost-script`)(tIB --> tOPT(tSCR)) <
-        +p{その\code(`inline-boxes`);の右側がどの文字体系なのかを取得する}
+        +p{その\type(tIB);の右側がどの文字体系なのかを取得する}
       >
       +val (`discretionary`) (tI --> tIB --> tIB --> tIB --> tIB) <
         +p{改行ペナルティ・「そこで行分割されなかったときの内容」・「そこで行分割されたときに直前の行末に入る内容」・「その直後の行頭に入る内容」を与えることで行分割候補位置を作成します。}
       >
       +val (`get-natural-metrics`) (tIB --> tPROD[tLN;tLN;tLN]) <
-        +p{その\code(`inline-boxes`);の横幅・高さ・深さをタプルで返します。}
+        +p{その\type(tIB);の横幅・高さ・深さをタプルで返します。}
       >
     >
 
@@ -110,10 +110,10 @@ document (|
 
     +section{その他}<
       +val (`(++)`) (tIB --> tIB --> tIB) <
-        +p{\code(`inlein-boxes`);同士を横に繋げます。}
+        +p{\type(tIB);同士を横に繋げます。}
       >
       +val (`hook-page-break`) (tFUN(tREC[(`page-number`, tI)] --> tPT --> tU) --> tIB)<
-        +p{ページ番号を元に何かを行う関数を行えることで副作用を起こします。返される\code(`inline-boxes`);は\code(`inline-nil`);と同じ挙動をします。}
+        +p{ページ番号を元に何かを行う関数を行えることで副作用を起こします。返される\type(tIB);は\code(`inline-nil`);と同じ挙動をします。}
       >
       +val (`line-stack-top`) (tL(tIB) --> tIB) <
         +p{詳細不明}

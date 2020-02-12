@@ -29,7 +29,11 @@
             val 
           </span>embed-math : context -> math -> inline-boxes
             <p>
-              <span class="code-inline"><code>math</code></span>型を<span class="code-inline"><code>inline-boxes</code></span>型にして文章中に置くための唯一のプリミティブです。
+              <span class="inline-type">
+                math
+              </span>型を<span class="inline-type">
+                inline-boxes
+              </span>型にして文章中に置くための唯一のプリミティブです。
             </p>
             
           </div><div class="api-val">
@@ -37,7 +41,9 @@
             val 
           </span>extract-string : inline-boxes -> string
             <p>
-              <span class="code-inline"><code>inline-boxes</code></span>を無理やり文字列に変換します。
+              <span class="inline-type">
+                inline-boxes
+              </span>を無理やり文字列に変換します。
             </p>
             
           </div><div class="api-val">
@@ -46,8 +52,16 @@
           </span>read-inline : context -> inline-text -> inline-boxes
             <p>
               <span class="code-inline"><code>read-inline ctx {text}</code></span>のようにして使います。
-              文字やコマンド以外の情報がない<span class="code-inline"><code>inline-text</code></span>を<span class="code-inline"><code>inline-boxes</code></span>型に変換します。
-              この時に与える<span class="code-inline"><code>context</code></span>型によって出力される<span class="code-inline"><code>inline-boxes</code></span>のフォントや色やフォントサイズを変更することができます。
+              文字やコマンド以外の情報がない<span class="inline-type">
+                inline-text
+              </span>を<span class="inline-type">
+                inline-boxes
+              </span>型に変換します。
+              この時に与える<span class="inline-type">
+                context
+              </span>型によって出力される<span class="inline-type">
+                inline-boxes
+              </span>のフォントや色やフォントサイズを変更することができます。
             </p>
             
           </div><div class="api-val">
@@ -55,7 +69,11 @@
             val 
           </span>line-break : bool -> bool -> context -> inline-text -> inline-boxes
             <p>
-              <span class="code-inline"><code>inline-boxes</code></span>型を<span class="code-inline"><code>block-boxes</code></span>型に変換します。
+              <span class="inline-type">
+                inline-boxes
+              </span>型を<span class="inline-type">
+                block-boxes
+              </span>型に変換します。
             </p>
             <p>
               最初に与える2つの真偽値は、それぞれ「そのブロックの直前での改行を許可するか」と「直後での改行を許可するか」です。
@@ -66,7 +84,11 @@
             val 
           </span>embed-block-breakable : context -> block-boxes -> inline-boxes
             <p>
-              <span class="code-inline"><code>block-boxes</code></span>型を一時的に<span class="code-inline"><code>inline-boxes</code></span>型に擬態させる役割を持ちます。
+              <span class="inline-type">
+                block-boxes
+              </span>型を一時的に<span class="inline-type">
+                inline-boxes
+              </span>型に擬態させる役割を持ちます。
             </p>
             
           </div><div class="api-val">
@@ -82,7 +104,11 @@
             val 
           </span>embed-block-top : context -> length -> (context -> block-boxes) -> inline-boxes
             <p>
-              <span class="code-inline"><code>block-boxes</code></span>型を指定した横幅の<span class="code-inline"><code>inline-boxes</code></span>型に変換します。この時、一番上の行が他の行と同じ高さになるように変換されます。
+              <span class="inline-type">
+                block-boxes
+              </span>型を指定した横幅の<span class="inline-type">
+                inline-boxes
+              </span>型に変換します。この時、一番上の行が他の行と同じ高さになるように変換されます。
             </p>
             
           </div><div class="api-val">
@@ -90,7 +116,11 @@
             val 
           </span>embed-block-bottom : context -> length -> (context -> block-boxes) -> inline-boxes
             <p>
-              <span class="code-inline"><code>block-boxes</code></span>型を指定した横幅の<span class="code-inline"><code>inline-boxes</code></span>型に変換します。この時、一番下の行が他の行と同じ高さになるように変換されます。
+              <span class="inline-type">
+                block-boxes
+              </span>型を指定した横幅の<span class="inline-type">
+                inline-boxes
+              </span>型に変換します。この時、一番下の行が他の行と同じ高さになるように変換されます。
             </p>
             
           </div><div class="api-val">
@@ -98,7 +128,11 @@
             val 
           </span>inline-graphics : length -> length -> length -> (point -> (grahpics) list) -> inline-boxes
             <p>
-              横幅・高さ・深さと、座標を元にグラフィックを返す関数を与えることで<span class="code-inline"><code>graphics</code></span>を<span class="code-inline"><code>inline-boxes</code></span>に変換できます。
+              横幅・高さ・深さと、座標を元にグラフィックを返す関数を与えることで<span class="inline-type">
+                grahpics
+              </span>を<span class="inline-type">
+                inline-boxes
+              </span>に変換できます。
             </p>
             
           </div><div class="api-val">
@@ -114,7 +148,11 @@
             val 
           </span>use-image-by-width : image -> length -> inline-boxes
             <p>
-              PDFや画像のパスから作成した<span class="code-inline"><code>image</code></span>型と横幅を与えることで<span class="code-inline"><code>inline-boxes</code></span>を作成します。
+              PDFや画像のパスから作成した<span class="inline-type">
+                image
+              </span>型と横幅を与えることで<span class="inline-type">
+                inline-boxes
+              </span>を作成します。
             </p>
             
           </div>
@@ -133,7 +171,9 @@
             val 
           </span>inline-fil : inline-boxes
             <p>
-              “何も起こさない”<span class="code-inline"><code>inline-boxes</code></span>です。
+              “何も起こさない”<span class="inline-type">
+                inline-boxes
+              </span>です。
             </p>
             
           </div><div class="api-val">
@@ -173,7 +213,9 @@
             val 
           </span>get-leftmost-script : inline-boxes -> (script) option
             <p>
-              その<span class="code-inline"><code>inline-boxes</code></span>がどの文字体系なのかを取得する
+              その<span class="inline-type">
+                inline-boxes
+              </span>がどの文字体系なのかを取得する
             </p>
             
           </div><div class="api-val">
@@ -181,7 +223,9 @@
             val 
           </span>get-leftmost-script : inline-boxes -> (script) option
             <p>
-              その<span class="code-inline"><code>inline-boxes</code></span>の左側がどの文字体系なのかを取得する
+              その<span class="inline-type">
+                inline-boxes
+              </span>の左側がどの文字体系なのかを取得する
             </p>
             
           </div><div class="api-val">
@@ -189,7 +233,9 @@
             val 
           </span>get-leftmost-script : inline-boxes -> (script) option
             <p>
-              その<span class="code-inline"><code>inline-boxes</code></span>の右側がどの文字体系なのかを取得する
+              その<span class="inline-type">
+                inline-boxes
+              </span>の右側がどの文字体系なのかを取得する
             </p>
             
           </div><div class="api-val">
@@ -205,7 +251,9 @@
             val 
           </span>get-natural-metrics : inline-boxes -> (length * length * length)
             <p>
-              その<span class="code-inline"><code>inline-boxes</code></span>の横幅・高さ・深さをタプルで返します。
+              その<span class="inline-type">
+                inline-boxes
+              </span>の横幅・高さ・深さをタプルで返します。
             </p>
             
           </div>
@@ -264,7 +312,9 @@
             val 
           </span>(++) : inline-boxes -> inline-boxes -> inline-boxes
             <p>
-              <span class="code-inline"><code>inlein-boxes</code></span>同士を横に繋げます。
+              <span class="inline-type">
+                inline-boxes
+              </span>同士を横に繋げます。
             </p>
             
           </div><div class="api-val">
@@ -272,7 +322,9 @@
             val 
           </span>hook-page-break : ((| page-number : int |) -> point -> unit) -> inline-boxes
             <p>
-              ページ番号を元に何かを行う関数を行えることで副作用を起こします。返される<span class="code-inline"><code>inline-boxes</code></span>は<span class="code-inline"><code>inline-nil</code></span>と同じ挙動をします。
+              ページ番号を元に何かを行う関数を行えることで副作用を起こします。返される<span class="inline-type">
+                inline-boxes
+              </span>は<span class="code-inline"><code>inline-nil</code></span>と同じ挙動をします。
             </p>
             
           </div><div class="api-val">

@@ -25,7 +25,7 @@ document (|
     +section {作成用関数}<
       +val (`scheme`) (tDECOSET --> tCLR --> tCTX --> tS --> tBB) <
         +p{コードを表示する部分の装飾、文字色、context、コードをそれぞれ与えることでソースコードが
-        組まれた\type(`block-boxes`);を得ることができます。}
+        組まれた\type(tBB);を得ることができます。}
       >
     >
   >
@@ -53,7 +53,7 @@ document (|
       +val (`scheme`) (tDECOSET --> tCLR --> tCTX --> tOPT (tMake(`syntax-def`)) --> tS --> tBB) <
         +p{コードを表示する部分の装飾、文字色、context、シンタックスハイライト、コード
         をそれぞれ与えることでソースコードが
-        組まれた\type(`block-boxes`);を得ることができます。}
+        組まれた\type(tBB);を得ることができます。}
       >
     >
   >
