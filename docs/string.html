@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>文字列</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+  </head>
+  <body>
+    <div class="api-top">
+      <div class="api-top-name">
+        primitive
+      </div>
+      <div class="api-top-inner">
+        <section>
+          <h1>変換系</h1>
+          <p>
+            他の型から変換したり他の型へ変換する系のプリミティブです。
+          </p>
+          <div class="api-val">
+            <span class="keyword">
+            val 
+          </span>embed-string : string -> inline-text
+            <p>
+              文字列をインラインに変換します。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>extract-string : inline-boxes -> string
+            <p>
+              <span class="inline-type">
+                inline-boxes
+              </span>を無理やり文字列に変換します。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>arabic : int -> string
+            <p>
+              <span class="inline-type">
+                int
+              </span>を<span class="inline-type">
+                string
+              </span>に変換します。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>show-float : float -> string
+            <p>
+              <span class="inline-type">
+                float
+              </span>を<span class="inline-type">
+                string
+              </span>に変換します。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>convert-string-for-math : context -> math-char-class -> string -> string
+            <p>
+              詳細不明
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>math-char : math-class -> string -> math
+            <p>
+              与えた文字列を指定した属性にする
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>math-big-char : math-class -> string -> math
+            <p>
+              <span class="code-inline"><code>math-char</code></span>の大型演算子版
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>math-char-with-kern : math-class -> string -> (length -> length -> length) -> (length -> length -> length) -> math
+            <p>
+              詳細不明
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>math-big-char-with-kern : math-class -> string -> (length -> length -> length) -> (length -> length -> length) -> math
+            <p>
+              詳細不明
+            </p>
+            
+          </div>
+        </section><section>
+          <h1>ファイル関係</h1>
+          <div class="api-val">
+            <span class="keyword">
+            val 
+          </span>load-pdf-image : string -> int -> image
+            <p>
+              PDFファイルまでのパスとページ番号を指定して<span class="inline-type">
+                image
+              </span>を作る。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>load-image : string -> image
+            <p>
+              画像ファイルまでのパスを指定して<span class="inline-type">
+                image
+              </span>を作る（現在はJPGファイルのみ対応）。
+            </p>
+            
+          </div>
+        </section><section>
+          <h1>操作系</h1>
+          <div class="api-val">
+            <span class="keyword">
+            val 
+          </span>string-same : string -> string -> bool
+            <p>
+              二つの文字列が等しいかを判定します。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>string-sub : string -> int -> int -> string
+            <p>
+              何文字目から何文字分取得するかを指定して元の文字列の部分文字列を取得できます。指定した範囲が元の文字列を超えている場合はエラーが出て終了します。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>string-sub-bytes : string -> int -> int -> string
+            <p>
+              <span class="code-inline"><code>string-sub</code></span>のバイト版です。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>string-length : string -> int
+            <p>
+              文字列の長さを取得します。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>string-byte-length : string -> int
+            <p>
+              何バイトかを取得します。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>string-unexplode : (int) list -> string
+            <p>
+              ユニコードポイントのリストを与えることで、それをもとにした文字列を作成します。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>string-explode : string -> (int) list
+            <p>
+              文字列からユニコードポイントのリストを作成します。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>split-into-lines : string -> ((int * string)) list
+            <p>
+              改行ごとに文字列を区切り、先頭の空白の長さの情報と一緒に返してきます。
+            </p>
+            
+          </div>
+        </section><section>
+          <h1>正規表現</h1>
+          <div class="api-val">
+            <span class="keyword">
+            val 
+          </span>regexp-of-string : string -> regexp
+            <p>
+              正規表現型の値を作成します。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>string-match : regexp -> string -> bool
+            <p>
+              正規表現のマッチを行います。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>string-scan : regexp -> string -> ((string * string)) option
+            <p>
+              
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>split-on-regexp : regexp -> string -> ((int * string)) list
+            <p>
+              正規表現の値を元に文字列を区切り、空白の長さの情報と一緒に返してきます。
+            </p>
+            
+          </div>
+        </section><section>
+          <h1>その他</h1>
+          <div class="api-val">
+            <span class="keyword">
+            val 
+          </span>(^) : string -> string -> string
+            <p>
+              <span class="inline-type">
+                string
+              </span>と<span class="inline-type">
+                string
+              </span>を繋ぎます。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>register-cross-reference : string -> string -> unit
+            <p>
+              <span class="code-inline"><code>key</code></span>と<span class="code-inline"><code>value</code></span>を与えることでsatysfi-auxファイルに書き出します。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>get-cross-reference : string -> (string) option
+            <p>
+              <span class="code-inline"><code>key</code></span>与えることでsatysfi-auxファイル書かれている値を取得します。存在しない場合は<span class="code-inline"><code>None</code></span>が返ってきます。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>probe-cross-reference : string -> (string) option
+            <p>
+              詳細不明
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>display-message : string -> unit
+            <p>
+              メッセージを出力します。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>abort-with-message : string -> 'a
+            <p>
+              メッセージを出力して停止します。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>register-outline : ((int * string * string * bool)) list -> unit
+            <p>
+              詳細不明
+            </p>
+            
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>

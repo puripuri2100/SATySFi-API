@@ -28,6 +28,7 @@ module SATySFiAPI : sig
   direct +pn : [inline-text] block-cmd
   direct +top : [inline-text; block-text] block-cmd
   direct +val : [string; Type.t; block-text] block-cmd
+  direct +cmdval : [string; Type.t list; cmd; block-text] block-cmd
   direct +direct : [string; Type.t list; cmd; block-text] block-cmd
   direct +type : [string; Type.t; block-text] block-cmd
   direct \type : [Type.t] inline-cmd
@@ -188,6 +189,26 @@ let-block tinfo +val s-name t-type bt-inner =
       s-val ^ break tinfo ^ s-inner tinfo
     )
 
+let-block tinfo +cmdval s-name t-type-lst cmd bt-inner =
+  let f lst =
+    let join i s1 s2 =
+      if i <= 0 then
+        s2
+      else
+        s1 ^ `; `# ^ s2
+    in
+    List.map Type.to-string lst |> List.fold-lefti join ` `
+  in
+  let s-cmd =
+    match cmd with
+      | InlineCmd -> `inline-cmd`
+      | BlockCmd -> `block-cmd`
+  in
+  let s-val = keyword tinfo (s-nil `direct `#) ^ s-name ^ #` : `# ^ `[` ^ f t-type-lst ^ `] `# ^ s-cmd in
+  let s-inner tinfo = stringify-block tinfo bt-inner in
+    HTMLBase.tag ?:([(`class`, `api-val`)]) tinfo `div` (fun tinfo ->
+      s-val ^ break tinfo ^ s-inner tinfo
+    )
 
 let-block tinfo +direct s-name t-type-lst cmd bt-inner =
   let f lst =

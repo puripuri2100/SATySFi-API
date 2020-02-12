@@ -20,6 +20,8 @@ module Type: sig
   val tPATH: t
   val tGR : t
   val tMATH: t
+  val tMATHCLS : t
+  val tMCCLS : t
   val tPT : t
   val tCLR : t
   val tDECO : t
@@ -56,6 +58,8 @@ end = struct
     | Path
     | Graphics
     | Math
+    | MathClass
+    | MathCharClass
     | Regexp
     | Point
     | Color
@@ -108,6 +112,8 @@ end = struct
     | Path -> `path`
     | Graphics -> `grahpics`
     | Math -> `math`
+    | MathClass -> `math-class`
+    | MathCharClass -> `math-char-class`
     | Regexp -> `regexp`
     | Point -> `point`
     | Color -> `color`
@@ -144,6 +150,8 @@ end = struct
   let tPATH = Path
   let tGR = Graphics
   let tMATH = Math
+  let tMATHCLS = MathClass
+  let tMCCLS = MathCharClass
   let tRE = Regexp
   let tPT = Point
   let tCLR = Color

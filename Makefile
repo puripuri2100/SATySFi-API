@@ -1,4 +1,4 @@
-.PHONY: index annot code color list deco random inline-text
+.PHONY: index annot code color list deco random inline block string
 
 index:
 	satysfi --text-mode html saty/index.saty -o docs/index.html
@@ -26,3 +26,6 @@ inline:
 
 block:
 	satysfi --text-mode html saty/block.saty -o docs/block.html
+
+string:
+	satysfi --text-mode html saty/string.saty -o docs/string.html

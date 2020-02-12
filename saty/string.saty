@@ -3,15 +3,109 @@
 open Type in
 
 document (|
-  title = {インライン};
+  title = {文字列};
   style-sheet = `main.css`;
 |) '<
   +top {primitive} <
     +section{変換系}<
       +p{他の型から変換したり他の型へ変換する系のプリミティブです。}
-      +val(`line-break`) (tB --> tB --> tCTX --> tIT --> tIB) <
-        +p{\type(tIB);型を\type(tBB);型に変換します。}
-        +p{最初に与える2つの真偽値は、それぞれ「そのブロックの直前での改行を許可するか」と「直後での改行を許可するか」です。}
+      +val(`embed-string`) (tS --> tIT) <
+        +p{文字列をインラインに変換します。}
+      >
+      +val (`extract-string`) (tIB --> tS) <
+        +p{\type(tIB);を無理やり文字列に変換します。}
+      >
+      +val (`arabic`) (tI --> tS) <
+        +p{\type(tI);を\type(tS);に変換します。}
+      >
+      +val (`show-float`) (tFL --> tS) <
+        +p{\type(tFL);を\type(tS);に変換します。}
+      >
+      +val (`convert-string-for-math`) (tCTX --> tMCCLS --> tS --> tS)<
+        +p{詳細不明}
+      >
+      +val (`math-char`) (tMATHCLS --> tS --> tMATH) <
+        +p{与えた文字列を指定した属性にする}
+      >
+      +val (`math-big-char`) (tMATHCLS --> tS --> tMATH) <
+        +p{\code(`math-char`);の大型演算子版}
+      >
+      +val (`math-char-with-kern`) (tMATHCLS --> tS --> tFUN(tLN --> tLN --> tLN) --> tFUN(tLN --> tLN --> tLN) --> tMATH) <
+        +p{詳細不明}
+      >
+      +val (`math-big-char-with-kern`) (tMATHCLS --> tS --> tFUN(tLN --> tLN --> tLN) --> tFUN(tLN --> tLN --> tLN) --> tMATH) <
+        +p{詳細不明}
+      >
+    >
+    +section{ファイル関係}<
+      +val (`load-pdf-image`) (tS --> tI --> tIMG) <
+        +p{PDFファイルまでのパスとページ番号を指定して\type(tIMG);を作る。}
+      >
+      +val (`load-image`) (tS --> tIMG) <
+        +p{画像ファイルまでのパスを指定して\type(tIMG);を作る（現在はJPGファイルのみ対応）。}
+      >
+    >
+    +section {操作系}<
+      +val (`string-same`) (tS --> tS --> tB) <
+        +p{二つの文字列が等しいかを判定します。}
+      >
+      +val (`string-sub`) (tS --> tI --> tI --> tS) <
+        +p{何文字目から何文字分取得するかを指定して元の文字列の部分文字列を取得できます。指定した範囲が元の文字列を超えている場合はエラーが出て終了します。}
+      >
+      +val (`string-sub-bytes`) (tS --> tI --> tI --> tS)<
+        +p{\code(`string-sub`);のバイト版です。}
+      >
+      +val (`string-length`) (tS --> tI) <
+        +p{文字列の長さを取得します。}
+      >
+      +val (`string-byte-length`) (tS --> tI)<
+        +p{何バイトかを取得します。}
+      >
+      +val (`string-unexplode`) (tL(tI) --> tS) <
+        +p{ユニコードポイントのリストを与えることで、それをもとにした文字列を作成します。}
+      >
+      +val (`string-explode`) (tS --> tL(tI)) <
+        +p{文字列からユニコードポイントのリストを作成します。}
+      >
+      +val (`split-into-lines`) (tS --> (tL (tPROD [tI; tS]))) <
+        +p{改行ごとに文字列を区切り、先頭の空白の長さの情報と一緒に返してきます。}
+      >
+    >
+    +section{正規表現}<
+      +val (`regexp-of-string`) (tS --> tRE)<
+        +p{正規表現型の値を作成します。}
+      >
+      +val (`string-match`) (tRE --> tS --> tB) <
+        +p{正規表現のマッチを行います。}
+      >
+      +val (`string-scan`) (tRE --> tS --> tOPT(tPROD [tS; tS])) <
+        +p{}
+      >
+      +val (`split-on-regexp`) (tRE --> tS --> (tL (tPROD [tI; tS]))) <
+        +p{正規表現の値を元に文字列を区切り、空白の長さの情報と一緒に返してきます。}
+      >
+    >
+    +section{その他}<
+      +val (`(^)`) (tS --> tS --> tS) <
+        +p{\type(tS);と\type(tS);を繋ぎます。}
+      >
+      +val (`register-cross-reference`) (tS --> tS --> tU) <
+        +p{\code(`key`);と\code(`value`);を与えることでsatysfi-auxファイルに書き出します。}
+      >
+      +val (`get-cross-reference`) (tS --> tOPT(tS)) <
+        +p{\code(`key`);与えることでsatysfi-auxファイル書かれている値を取得します。存在しない場合は\code(`None`);が返ってきます。}
+      >
+      +val (`probe-cross-reference`)(tS --> tOPT(tS)) <
+        +p{詳細不明}
+      >
+      +val (`display-message`) (tS --> tU) <
+        +p{メッセージを出力します。}
+      >
+      +val (`abort-with-message`) (tS --> tVAR(`a`)) <
+        +p{メッセージを出力して停止します。}
+      >
+      +val (`register-outline`) (tL(tPROD [tI; tS; tS; tB]) --> tU) <
+        +p{詳細不明}
       >
     >
   >
