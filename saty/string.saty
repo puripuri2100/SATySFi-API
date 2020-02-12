@@ -1,0 +1,18 @@
+@import: ../packages/satysfi-api
+
+open Type in
+
+document (|
+  title = {インライン};
+  style-sheet = `main.css`;
+|) '<
+  +top {primitive} <
+    +section{変換系}<
+      +p{他の型から変換したり他の型へ変換する系のプリミティブです。}
+      +val(`line-break`) (tB --> tB --> tCTX --> tIT --> tIB) <
+        +p{\type(tIB);型を\type(tBB);型に変換します。}
+        +p{最初に与える2つの真偽値は、それぞれ「そのブロックの直前での改行を許可するか」と「直後での改行を許可するか」です。}
+      >
+    >
+  >
+>
