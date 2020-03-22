@@ -3,9 +3,9 @@
 @require: html-base
 
 @import: type
-@import: itemize
-@import: code
-@import: url
+@require: make-html/itemize
+@require: make-html/code
+@require: make-html/url
 
 
 type cmd =  
