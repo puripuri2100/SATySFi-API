@@ -1,5 +1,5 @@
 @import: ../packages/satysfi-api
-@import: ../packages/itemize
+@require: make-html/itemize
 
 document (|
   title = {SATySFi API};
