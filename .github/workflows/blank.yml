@@ -1,0 +1,35 @@
+name: Build and Deploy
+
+on: 
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [0.0.4-dev2020.02.22]
+    container:
+      image: amutake/satysfi:${{ matrix.version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Build
+        run: |
+          export HOME=/root
+          eval $(opam env)
+          opam update
+          opam install satysfi-make-html
+          satyrographos install
+          make build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build # The folder the action should deploy.
