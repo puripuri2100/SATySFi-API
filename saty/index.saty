@@ -1,5 +1,4 @@
 @import: ../packages/satysfi-api
-@import: ../packages/itemize
 
 document (|
   title = {SATySFi API};
