@@ -1,1 +1,1 @@
-[SATySFi API](https://puripuri2100.github.io/SATySFI-API/)
+New Repository -> https://github.com/puripuri2100/SATySFi-lib

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>インライン</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+  </head>
+  <body>
+    <div class="api-top">
+      <div class="api-top-name">
+        primitive
+      </div>
+      <div class="api-top-inner">
+        <section>
+          <h1>変換系</h1>
+          <p>
+            他の型から変換したり他の型へ変換する系のプリミティブです。
+          </p>
+          <div class="api-val">
+            <span class="keyword">
+            val 
+          </span>embed-string : string -> inline-text
+            <p>
+              文字列をインラインに変換します。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>embed-math : context -> math -> inline-boxes
+            <p>
+              <span class="inline-type">
+                math
+              </span>型を<span class="inline-type">
+                inline-boxes
+              </span>型にして文章中に置くための唯一のプリミティブです。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>extract-string : inline-boxes -> string
+            <p>
+              <span class="inline-type">
+                inline-boxes
+              </span>を無理やり文字列に変換します。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>read-inline : context -> inline-text -> inline-boxes
+            <p>
+              <span class="code-inline"><code>read-inline ctx {text}</code></span>のようにして使います。
+              文字やコマンド以外の情報がない<span class="inline-type">
+                inline-text
+              </span>を<span class="inline-type">
+                inline-boxes
+              </span>型に変換します。
+              この時に与える<span class="inline-type">
+                context
+              </span>型によって出力される<span class="inline-type">
+                inline-boxes
+              </span>のフォントや色やフォントサイズを変更することができます。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>line-break : bool -> bool -> context -> inline-text -> inline-boxes
+            <p>
+              <span class="inline-type">
+                inline-boxes
+              </span>型を<span class="inline-type">
+                block-boxes
+              </span>型に変換します。
+            </p>
+            <p>
+              最初に与える2つの真偽値は、それぞれ「そのブロックの直前での改行を許可するか」と「直後での改行を許可するか」です。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>embed-block-breakable : context -> block-boxes -> inline-boxes
+            <p>
+              <span class="inline-type">
+                block-boxes
+              </span>型を一時的に<span class="inline-type">
+                inline-boxes
+              </span>型に擬態させる役割を持ちます。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>add-footnote : block-boxes -> inline-boxes
+            <p>
+              脚注を作成します。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>embed-block-top : context -> length -> (context -> block-boxes) -> inline-boxes
+            <p>
+              <span class="inline-type">
+                block-boxes
+              </span>型を指定した横幅の<span class="inline-type">
+                inline-boxes
+              </span>型に変換します。この時、一番上の行が他の行と同じ高さになるように変換されます。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>embed-block-bottom : context -> length -> (context -> block-boxes) -> inline-boxes
+            <p>
+              <span class="inline-type">
+                block-boxes
+              </span>型を指定した横幅の<span class="inline-type">
+                inline-boxes
+              </span>型に変換します。この時、一番下の行が他の行と同じ高さになるように変換されます。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>inline-graphics : length -> length -> length -> (point -> (grahpics) list) -> inline-boxes
+            <p>
+              横幅・高さ・深さと、座標を元にグラフィックを返す関数を与えることで<span class="inline-type">
+                grahpics
+              </span>を<span class="inline-type">
+                inline-boxes
+              </span>に変換できます。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>inline-graphics-outer : length -> length -> length -> (length -> point -> (grahpics) list) -> inline-boxes
+            <p>
+              詳細不明
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>use-image-by-width : image -> length -> inline-boxes
+            <p>
+              PDFや画像のパスから作成した<span class="inline-type">
+                image
+              </span>型と横幅を与えることで<span class="inline-type">
+                inline-boxes
+              </span>を作成します。
+            </p>
+            
+          </div>
+        </section><section>
+          <h1>長さ・余白系</h1>
+          <div class="api-val">
+            <span class="keyword">
+            val 
+          </span>inline-nil : inline-boxes
+            <p>
+              “何も起こさない”<span class="inline-type">
+                inline-boxes
+              </span>です。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>inline-fil : inline-boxes
+            <p>
+              周囲の要請に合わせてどこまでも伸びるが行分割されることのない空白です。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>inline-skip : length -> inline-boxes
+            <p>
+              指定した長さの分だけ改行されない空白を作ります。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>inline-glue : length -> length -> length -> inline-boxes
+            <p>
+              自然な長さ・周囲の要請に合わせて縮む時の長さ・伸びるときの長さを与えて空白を作ります。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>script-guard : script -> inline-boxes -> inline-boxes
+            <p>
+              文字体系を与えることで、前後のスペーシングをその文字体系に揃えられます。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>script-guard-both : script -> script -> inline-boxes -> inline-boxes
+            <p>
+              前後に違う文字体系が来るときに、そのスペーシングを調節できる。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>get-leftmost-script : inline-boxes -> (script) option
+            <p>
+              その<span class="inline-type">
+                inline-boxes
+              </span>がどの文字体系なのかを取得する
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>get-leftmost-script : inline-boxes -> (script) option
+            <p>
+              その<span class="inline-type">
+                inline-boxes
+              </span>の左側がどの文字体系なのかを取得する
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>get-leftmost-script : inline-boxes -> (script) option
+            <p>
+              その<span class="inline-type">
+                inline-boxes
+              </span>の右側がどの文字体系なのかを取得する
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>discretionary : int -> inline-boxes -> inline-boxes -> inline-boxes -> inline-boxes
+            <p>
+              改行ペナルティ・「そこで行分割されなかったときの内容」・「そこで行分割されたときに直前の行末に入る内容」・「その直後の行頭に入る内容」を与えることで行分割候補位置を作成します。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>get-natural-metrics : inline-boxes -> (length * length * length)
+            <p>
+              その<span class="inline-type">
+                inline-boxes
+              </span>の横幅・高さ・深さをタプルで返します。
+            </p>
+            
+          </div>
+        </section><section>
+          <h1>囲みわく</h1>
+          <div class="api-val">
+            <span class="keyword">
+            val 
+          </span>inline-frame-outer : pads -> deco -> inline-boxes -> inline-boxes
+            <p>
+              余白指定、描画指定、内容をそれぞれ入れることで枠で囲まれた部分を作ります。
+            </p>
+            <p>
+              枠内で行分割されることはありませんが、内側の要請に合わせて内容に含まれるグルーが伸び縮みします。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>inline-frame-inner : pads -> deco -> inline-boxes -> inline-boxes
+            <p>
+              余白指定、描画指定、内容をそれぞれ入れることで枠で囲まれた部分を作ります。
+            </p>
+            <p>
+              枠内で行分割されることはありません。また、内容に含まれるグルーが伸び縮みすることはありません。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>inline-frame-fixed : length -> pads -> deco -> inline-boxes -> inline-boxes
+            <p>
+              枠の幅、余白指定、描画指定、内容をそれぞれ入れることで枠で囲まれた部分を作ります。
+            </p>
+            <p>
+              枠内で行分割されることはありませんが、最初に入れた枠の幅に合わせて内容に含まれるグルーが伸び縮みします。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>inline-frame-breakable : pads -> deco-set -> inline-boxes -> inline-boxes
+            <p>
+              余白、描画指定、内容をそれぞれ入れることで
+              途中で行分割可能な枠で囲まれた部分を作ります。内容のグルーは行分割に合わせて伸び縮みします。
+            </p>
+            <p>
+              <span class="code-inline"><code>inline-frame-breakable</code></span>に与えられるdeco-setはそれぞれ「口」形・「匚」形・「二」形・「コ」形のグラフィックスを返すような関数です。
+            </p>
+            
+          </div>
+        </section><section>
+          <h1>その他</h1>
+          <div class="api-val">
+            <span class="keyword">
+            val 
+          </span>(++) : inline-boxes -> inline-boxes -> inline-boxes
+            <p>
+              <span class="inline-type">
+                inline-boxes
+              </span>同士を横に繋げます。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>hook-page-break : ((| page-number : int |) -> point -> unit) -> inline-boxes
+            <p>
+              ページ番号を元に何かを行う関数を行えることで副作用を起こします。返される<span class="inline-type">
+                inline-boxes
+              </span>は<span class="code-inline"><code>inline-nil</code></span>と同じ挙動をします。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>line-stack-top : (inline-boxes) list -> inline-boxes
+            <p>
+              詳細不明
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>line-stack-bottom : (inline-boxes) list -> inline-boxes
+            <p>
+              詳細不明
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>raise-inline : length -> inline-boxes -> inline-boxes
+            <p>
+              詳細不明
+            </p>
+            
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
