@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>ハイパーリンク</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+  </head>
+  <body>
+    <div class="api-top">
+      <div class="api-top-name">
+        module List: sig end
+      </div>
+      <div class="api-top-inner">
+        <section>
+          <h1>要素を取得する</h1>
+          <div class="api-val">
+            <span class="keyword">
+            val 
+          </span>nth : int -> ('a) list -> ('a) option
+            <p>
+              何番目の要素かを指定することでリストの中身を取り出せます。
+              一番最初は0です。
+            </p>
+            <p>
+              指定した場所に要素が無い場合は<span class="code-inline"><code>None</code></span>が返ってきます。
+            </p>
+            
+          </div>
+        </section><section>
+          <h1>関数を適用する</h1>
+          <div class="api-val">
+            <span class="keyword">
+            val 
+          </span>map : ('a -> 'b) -> ('a) list -> ('b) list
+            <p>
+              リストの要素すべてに関数を適用したリストを返します。
+            </p>
+            
+          </div><div class="api-val">
+            <span class="keyword">
+            val 
+          </span>mapi : (int -> 'a -> 'b) -> ('a) list -> ('b) list
+            <p>
+              リストの要素すべてに関数を適用したリストを返します。
+            </p>
+            <p>
+              適用する関数でいくつ目の要素なのかを考慮することができます。
+            </p>
+            
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
